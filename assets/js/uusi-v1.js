@@ -240,6 +240,7 @@
       l.querySelector('[data-laskuri-jaljella]').textContent = kesto(s.aika - nyt);
       var iq = l.querySelector('[data-laskuri-iqamah]'); iq.hidden = !iqa;
       if (iqa) l.querySelector('[data-laskuri-iqamah-aika]').textContent = aika(iqa);
+      l.querySelector('[data-laskuri-palkki]').style.width = (osuus * 100).toFixed(1) + '%';
     });
   }
 
