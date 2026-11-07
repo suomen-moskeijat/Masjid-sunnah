@@ -45,4 +45,4 @@
   window.MOSKEIJAT = [{% if m.sijainti.lat %}{ "nimi": {{ m.title | jsonify }}, "kaupunki": {{ m.kaupunki | jsonify }}, "osoite": {{ m.osoite | jsonify }}, "url": {{ kartta_url | jsonify }}, "lat": {{ m.sijainti.lat }}, "lon": {{ m.sijainti.lon }} }{% endif %}];
 </script>
 <script src="{{ '/assets/vendor/leaflet/leaflet.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/kartta.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/kartta.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
