@@ -39,6 +39,7 @@ jobs:
         with:
           source: ./
           destination: ./_site
+          future: true   # tapahtumat ovat tulevaisuudessa
 
       - uses: actions/upload-pages-artifact@v3
 
