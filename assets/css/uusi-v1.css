@@ -492,3 +492,26 @@ body.on-valikko .u-pikanapit { display: none; }
   .u-hero__napit .u-nappi { width: auto; }
   .u-osio--hero-jalkeen { padding-top: 88px !important; }
 }
+
+/* ---------- Siistiminen frontend-design- ja ui-ux-pro-max-ohjeiden mukaan ---------- */
+/* Otsikkolaput tavallisin kirjaimin, ei koristevinoneliötä */
+.u-eyebrow, .rk__eyebrow { text-transform: none; letter-spacing: 0; font-size: 14px; font-weight: 600; }
+.u-eyebrow::before { display: none; }
+/* Etusivun yläosasta pois ylimääräinen paikkalappu ja koristeellinen edistymispalkki */
+.u-hero__teksti > .u-eyebrow { display: none; }
+.u-hero h1 { margin-top: 4px; }
+.rk--vain-seuraava .rk__palkki { display: none; }
+.rk--vain-seuraava .rk__seuraava { padding-bottom: 18px; }
+/* Linkit ilman perään lisättyä nuolta: alleviivaus kertoo, että kyse on linkistä */
+.u-linkki .u-flip, .u-toiminta__nuoli { display: none; }
+.u-linkki { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+.u-linkki:hover { text-decoration-color: currentColor; }
+/* Toimintamme: rauhallinen lista erottimin identtisten korttien sijaan */
+.u-toiminta { gap: 0 40px; border-bottom: 1px solid var(--raja); }
+.u-toiminta__kohta { padding: 18px 0; background: none; border: 0; border-top: 1px solid var(--raja); border-radius: 0; }
+.u-toiminta__kohta:hover { box-shadow: none; transform: none; }
+.u-toiminta__kohta:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width: 720px) { .u-toiminta { border-bottom: 0; } .u-toiminta li:nth-last-child(-n+2) .u-toiminta__kohta { border-bottom: 1px solid var(--raja); } }
+/* Napautusalueet vähintään 44 px */
+.u-nappi--pieni { min-height: 44px; }
+.u-logo { min-height: 44px; align-items: center; }
