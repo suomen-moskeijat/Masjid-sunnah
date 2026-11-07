@@ -19,11 +19,12 @@ rukousajat:
 | **Masjidbox** | `masjidbox` | osoitteen `masjidbox.com/prayer-times/TUNNUS` loppuosa | Adhan, iqamah ja Jumuah haetaan **automaattisesti kerran tunnissa** (seuraavat 7 päivää). |
 | **Mawaqit** | `mawaqit` | osoitteen `mawaqit.net/fi/TUNNUS` loppuosa | Adhan, iqamah ja Jumuah haetaan **automaattisesti kerran tunnissa** (kuluva + 2 seuraavaa kuukautta). Myös moskeijan **kuvat** Mawaqitista lisätään galleriaan. |
 | **Oma aikataulu** (Excel, PDF tms.) | `taulukko` | – | Kuukauden ajat lisätään CSV-tiedostona: `_data/aikataulut/<moskeija>/VVVV-KK.csv` (malli alla). |
-| **Ei mitään** | `laskenta` (tai jätä tyhjäksi) | – | Sivu **laskee ajat itse** moskeijan koordinaateista (`sijainti: lat, lon`). Iqamah = rukousaika + `iqamah_oletus` minuuttia. |
+| **Ei mitään** | `laskenta` (tai jätä tyhjäksi) | – | Ajat lasketaan **samalla tavalla kuin [rukousajat.fi](https://www.rukousajat.fi/)** moskeijan koordinaateista (`sijainti: lat, lon`). Iqamah = rukousaika + `iqamah_oletus` minuuttia. |
 
-Ilman lähdettä tarvitaan siis vain moskeijan sijainti. Laskennan voi hienosäätää kentillä
-`laskentatapa` (oletus MuslimWorldLeague), `madhab` (Shafi/Hanafi) ja
-`korkeat_leveysasteet` (kesän valoisat yöt, oletus SeventhOfTheNight).
+Ilman lähdettä tarvitaan siis vain moskeijan sijainti. Oletusasetukset ovat samat kuin
+rukousajat.fi:ssä: `laskentatapa: MuslimWorldLeague`, `madhab: Shafi` ja
+`korkeat_leveysasteet: TwilightAngle` (kesän valoisat yöt). Niitä voi muuttaa, jos moskeija
+haluaa toisin. Sama laskenta täyttää myös päivät, joille virallista aikaa ei vielä ole.
 
 **Perjantai:** Masjidbox ja Mawaqit antavat Jumuah-ajan. Muuten kenttä `juma: "13.30"`.
 

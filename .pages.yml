@@ -200,7 +200,7 @@ content:
           - name: lahde
             label: Mistä rukousajat tulevat
             type: select
-            description: "masjidbox / mawaqit = ajat ja iqamah haetaan automaattisesti kerran tunnissa; taulukko = omat CSV-tiedostot; laskenta = sivu laskee ajat koordinaateista"
+            description: "masjidbox / mawaqit = ajat ja iqamah haetaan automaattisesti kerran tunnissa; taulukko = omat CSV-tiedostot; laskenta = sama laskenta kuin rukousajat.fi (moskeijan koordinaateista). Oletus, jos lähdettä ei valita."
             options:
               values: [masjidbox, mawaqit, taulukko, laskenta]
           - { name: tunnus, label: Moskeijan tunnus palvelussa, type: string, description: "Masjidbox: osoitteen masjidbox.com/prayer-times/TUNNUS loppuosa. Mawaqit: osoitteen mawaqit.net/fi/TUNNUS loppuosa." }
@@ -229,7 +229,7 @@ content:
             label: Kesän valoisien öiden sääntö
             type: select
             options:
-              values: [SeventhOfTheNight, MiddleOfTheNight, TwilightAngle]
+              values: [TwilightAngle, SeventhOfTheNight, MiddleOfTheNight]
           - name: saadot
             label: Säädöt minuutteina (+/-)
             type: object

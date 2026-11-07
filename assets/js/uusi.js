@@ -133,7 +133,7 @@
     var tapa = adhan.CalculationMethod[asetus.laskentatapa] || adhan.CalculationMethod.MuslimWorldLeague;
     var p = tapa();
     p.madhab = asetus.madhab === 'Hanafi' ? adhan.Madhab.Hanafi : adhan.Madhab.Shafi;
-    p.highLatitudeRule = adhan.HighLatitudeRule[asetus.leveysaste] || adhan.HighLatitudeRule.SeventhOfTheNight;
+    p.highLatitudeRule = adhan.HighLatitudeRule[asetus.leveysaste] || adhan.HighLatitudeRule.TwilightAngle; // kuten rukousajat.fi
     Object.keys(asetus.saadot || {}).forEach(function (k) { p.adjustments[k] = Number(asetus.saadot[k]) || 0; });
     return { p: p, koord: new adhan.Coordinates(asetus.lat, asetus.lon) };
   }

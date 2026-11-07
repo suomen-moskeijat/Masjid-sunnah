@@ -18,7 +18,7 @@
   data-lon="{{ m.sijainti.lon }}"
   data-laskentatapa="{{ r.laskentatapa | default: 'MuslimWorldLeague' }}"
   data-madhab="{{ r.madhab | default: 'Shafi' }}"
-  data-leveysaste="{{ r.korkeat_leveysasteet | default: 'SeventhOfTheNight' }}"
+  data-leveysaste="{{ r.korkeat_leveysasteet | default: 'TwilightAngle' }}"
   data-saadot='{"fajr":{{ s.fajr | default: 0 }},"sunrise":{{ s.auringonnousu | default: 0 }},"dhuhr":{{ s.dhuhr | default: 0 }},"asr":{{ s.asr | default: 0 }},"maghrib":{{ s.maghrib | default: 0 }},"isha":{{ s.isha | default: 0 }}}'
   {% if io %}data-iqamah-oletus='{"fajr":{{ io.fajr | default: "null" }},"dhuhr":{{ io.dhuhr | default: "null" }},"asr":{{ io.asr | default: "null" }},"maghrib":{{ io.maghrib | default: "null" }},"isha":{{ io.isha | default: "null" }}}'{% endif %}
   data-juma="{{ m.juma }}">

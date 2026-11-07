@@ -60,7 +60,7 @@
     var tapa = adhan.CalculationMethod[el.dataset.laskentatapa] || adhan.CalculationMethod.MuslimWorldLeague;
     var p = tapa();
     p.madhab = el.dataset.madhab === 'Hanafi' ? adhan.Madhab.Hanafi : adhan.Madhab.Shafi;
-    p.highLatitudeRule = adhan.HighLatitudeRule[el.dataset.leveysaste] || adhan.HighLatitudeRule.SeventhOfTheNight;
+    p.highLatitudeRule = adhan.HighLatitudeRule[el.dataset.leveysaste] || adhan.HighLatitudeRule.TwilightAngle; // kuten rukousajat.fi
     try {
       var saadot = JSON.parse(el.dataset.saadot || '{}');
       Object.keys(saadot).forEach(function (k) { p.adjustments[k] = Number(saadot[k]) || 0; });

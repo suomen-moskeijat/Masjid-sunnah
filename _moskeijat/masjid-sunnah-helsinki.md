@@ -281,7 +281,7 @@ rukousajat:
   iqamah_oletus: { fajr: 10, dhuhr: 10, asr: 10, maghrib: 5, isha: 10 }
   laskentatapa: MuslimWorldLeague     # varalla, jos kuukauden aikataulua ei ole lisätty
   madhab: Shafi
-  korkeat_leveysasteet: SeventhOfTheNight
+  korkeat_leveysasteet: TwilightAngle   # kuten rukousajat.fi
 
 teema:
   logo: /tiedostot/masjid-sunnah/logo.png
