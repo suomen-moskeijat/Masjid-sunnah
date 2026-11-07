@@ -1,0 +1,18 @@
+---
+layout: uusi-v1
+title: Rukousajat
+permalink: /uusi-v1/rukousajat/
+rukousajat: true
+---
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{% include u1/rukousdata.html moskeija=m %}
+{% include u1/sivuhero.html avain="rukousajat" johdanto_avain="aikataulu_virallinen" %}
+<div class="u-kehys u-sivu u-rukoussivu">
+  <div class="u-rukoussivu__tanaan">
+    {% include u1/rukous.html %}
+    {% if m.juma and m.juma != "" %}
+    <div class="u-kortti u-juma"><span class="u-ikoni">{% include ikoni.html nimi="moskeija" koko=22 %}</span><span><strong>{% include k.html a="jumua" %}</strong><small>{% include k.html a="jumua_lyhyt" %}</small></span><b dir="ltr">{{ m.juma }}</b></div>
+    {% endif %}
+  </div>
+  {% include u1/kuukausi.html moskeija=m %}
+</div>

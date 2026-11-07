@@ -1,0 +1,10 @@
+---
+layout: uusi-v1
+title: Tapahtumat
+permalink: /uusi-v1/tapahtumat/
+---
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{% include u1/sivuhero.html avain="nav_tapahtumat" johdanto_avain="tapahtumat_teksti" %}
+<div class="u-kehys u-sivu u-sivu--kapea">
+  {% include u1/tapahtumat.html moskeija=m %}
+</div>
