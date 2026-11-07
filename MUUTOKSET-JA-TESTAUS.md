@@ -1,6 +1,6 @@
 # Uusi sivusto: muutokset Lovable-versioon verrattuna ja testausohje
 
-Testattava versio: **https://suomen-moskeijat.github.io/Masjid-sunnah/uusi-v1/**
+Testattava versio: **https://suomen-moskeijat.github.io/Masjid-sunnah/**
 (Vertailuksi Lovable-versio: https://masjidsunna.lovable.app/)
 
 Testaa mieluiten puhelimella. Kokeile jokaista kohtaa vähintään suomeksi ja arabiaksi.
@@ -35,7 +35,7 @@ Merkitse ylös, mikä ei toimi tai näyttää oudolta (sivu, kieli, puhelinmalli
 
 ## 2. Testauslista
 
-### Etusivu – /uusi-v1/
+### Etusivu – /
 - [ ] Ylhäällä: Malmi, Helsinki -merkki, otsikko, esittelyteksti.
 - [ ] **Seuraava rukous** -kortti: oikea rukous ja kellonaika, laskuri vähenee sekunneittain, iqamah näkyy (esim. Isha → Iqamah 20:00).
 - [ ] Illalla Ishan jälkeen kortissa lukee **Fajr + "huomenna"**.
@@ -62,25 +62,25 @@ Merkitse ylös, mikä ei toimi tai näyttää oudolta (sivu, kieli, puhelinmalli
 - [ ] ☰-nappi avaa valikon, ✕ sulkee sen.
 - [ ] Kaikki linkit toimivat; Lahjoita, WhatsApp ja Soita -napit toimivat.
 
-### Rukousajat – /uusi-v1/rukousajat/
+### Rukousajat – /rukousajat/
 - [ ] Seuraava rukous -kortti kuten etusivulla.
 - [ ] Päivän taulukko: adhan, iqamah, auringonnousu, hijri-päivämäärä; seuraava rukous korostettuna.
 - [ ] Kuukausitaulukko: tämä päivä korostettuna, nuolista edellinen/seuraava kuukausi.
 
-### Opetus ja palvelut – /uusi-v1/palvelut/ ja lasten opetus – /uusi-v1/palvelut/lasten-opetus/
+### Opetus ja palvelut – /palvelut/ ja lasten opetus – /palvelut/lasten-opetus/
 - [ ] Palvelut näkyvät kuvakkeineen.
 - [ ] **Ilmoittautumislomake**: pakolliset kentät huomauttavat, jos ne jäävät tyhjiksi; opetuksen tyypin valinta; suostumus.
 - [ ] Lähetä ilmoittautuminen → **avaa WhatsAppin valmiiksi täytetyllä viestillä** (sähköpostilähetys otetaan käyttöön, kun moskeija antaa lomakeosoitteen).
 
-### Yhteystiedot – /uusi-v1/yhteystiedot/
+### Yhteystiedot – /yhteystiedot/
 - [ ] Osoite, puhelin, Reittiohjeet (avaa kartan), WhatsApp, kartta näkyy.
 - [ ] **Kysy moskeijalta** -lomake: sama toiminta kuin ilmoittautumisessa.
 
 ### Muut sivut
-- [ ] Meistä – /uusi-v1/meista/
-- [ ] Tapahtumat – /uusi-v1/tapahtumat/ (nyt tyhjä → ohjaus Instagramiin)
-- [ ] Lahjoita – /uusi-v1/lahjoita/
-- [ ] Tietosuoja – /uusi-v1/tietosuoja/ (linkki alapalkissa)
+- [ ] Meistä – /meista/
+- [ ] Tapahtumat – /tapahtumat/ (nyt tyhjä → ohjaus Instagramiin)
+- [ ] Lahjoita – /lahjoita/
+- [ ] Tietosuoja – /tietosuoja/ (linkki alapalkissa)
 
 ### Yleistä
 - [ ] Mikään sivu ei vieritä sivuttain puhelimella.
@@ -93,4 +93,4 @@ Merkitse ylös, mikä ei toimi tai näyttää oudolta (sivu, kieli, puhelinmalli
 - **Lahjoitustiedot** (tilinumero / MobilePay) – lahjoitussivulla lukee nyt "lisätään pian".
 - **Sähköpostiosoite ja lomakeosoite** (esim. Formspree), jotta lomakkeet lähtevät sähköpostiin eivätkä vain WhatsAppiin.
 - **Reaaliaikainen rukousaikayhteys**: nyt ajat päivittyvät kerran tunnissa; reaaliaikainen yhteys suunnitellaan myöhemmin.
-- **Julkaisu**: testiversio ei näy hakukoneissa (noindex). Kun versio hyväksytään, siitä tehdään pääsivu.
+- **Oma verkkotunnus** (esim. masjidsunnah.fi) voidaan ottaa käyttöön myöhemmin.

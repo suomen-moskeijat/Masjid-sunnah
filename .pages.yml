@@ -1,5 +1,5 @@
 # Pages CMS -muokkausnäkymän asetukset (https://pagescms.org)
-# Moskeijat voivat tämän avulla lisätä tapahtumia, artikkeleita ja tiedostoja
+# Moskeija voi tämän avulla muokata omia tietojaan ja lisätä tapahtumia
 # selaimessa ilman koodaamista. Muutos julkaistaan automaattisesti sivustolle.
 
 media:
@@ -23,10 +23,6 @@ content:
       - { name: otsikko_en, label: Tapahtuman nimi englanniksi, type: string }
       - { name: otsikko_ar, label: Tapahtuman nimi arabiaksi, type: string }
       - { name: otsikko_so, label: Tapahtuman nimi somaliksi, type: string }
-      - name: moskeija
-        label: Moskeija
-        type: string
-        description: Moskeijan tiedostonimi ilman .md-päätettä, esim. esimerkki-helsinki. Ei tarvita moskeijan omalla sivustolla.
       - { name: paiva, label: Päivämäärä, type: date, required: true }
       - { name: paiva_loppuu, label: Päättymispäivä (jos useampipäiväinen), type: date }
       - { name: alkaa, label: Alkaa klo, type: string, description: "esim. 18.00" }
@@ -35,32 +31,6 @@ content:
       - { name: ilmoittautuminen, label: Ilmoittautumislinkki, type: string }
       - { name: kuva, label: Kuva, type: image }
       - { name: body, label: Kuvaus, type: rich-text }
-
-  - name: artikkelit
-    label: Artikkelit ja tiedostot
-    type: collection
-    path: _posts
-    filename: "{year}-{month}-{day}-{primary}.md"
-    view:
-      fields: [title, date, moskeija]
-    fields:
-      - { name: title, label: Otsikko, type: string, required: true }
-      - { name: date, label: Julkaisupäivä, type: date, required: true }
-      - name: moskeija
-        label: Moskeija
-        type: string
-        description: Moskeijan tiedostonimi ilman .md-päätettä, esim. esimerkki-helsinki. Ei tarvita moskeijan omalla sivustolla.
-      - { name: kirjoittaja, label: Kirjoittaja, type: string }
-      - { name: tiivistelma, label: Tiivistelmä, type: text, description: Lyhyt kuvaus artikkelilistaan }
-      - { name: kansikuva, label: Kansikuva, type: image }
-      - name: liitteet
-        label: Ladattavat tiedostot
-        type: object
-        list: true
-        fields:
-          - { name: nimi, label: Tiedoston nimi sivulla, type: string }
-          - { name: tiedosto, label: Tiedosto, type: file }
-      - { name: body, label: Teksti, type: rich-text }
 
   - name: moskeijat
     label: Moskeijat
