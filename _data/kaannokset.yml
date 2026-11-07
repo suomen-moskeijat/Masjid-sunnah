@@ -161,3 +161,23 @@ footer_lisaa:       { fi: "Lisää oma moskeijasi", en: "Add your mosque", ar: "
 footer_rukous:      { fi: "Rukousajat lasketaan tähtitieteellisesti. Tarkista tarkat ajat omasta moskeijastasi.", en: "Prayer times are calculated astronomically. Check exact times with your mosque.", ar: "تُحسب مواقيت الصلاة فلكياً. تحقق من المواقيت الدقيقة لدى مسجدك.", so: "Waqtiyada salaadda waxaa lagu xisaabiyaa xiddigiska. Ka hubi waqtiyada saxda ah masjidkaaga." }
 footer_hakemisto:   { fi: "Etsi muita moskeijoita", en: "Find other mosques", ar: "ابحث عن مساجد أخرى", so: "Raadi masaajid kale" }
 oikeudet:           { fi: "Kaikki oikeudet pidätetään.", en: "All rights reserved.", ar: "جميع الحقوق محفوظة.", so: "Xuquuqda oo dhan way dhowran tahay." }
+
+# --- Uusi ulkoasu ---
+adhan:              { fi: "Adhan", en: "Adhan", ar: "الأذان", so: "Aadaan" }
+jaljella:           { fi: "jäljellä", en: "remaining", ar: "متبقٍّ", so: "ka hadhay" }
+edellinen_kuukausi: { fi: "Edellinen kuukausi", en: "Previous month", ar: "الشهر السابق", so: "Bishii hore" }
+seuraava_kuukausi:  { fi: "Seuraava kuukausi", en: "Next month", ar: "الشهر التالي", so: "Bisha xigta" }
+tervetuloa_kaymaan: { fi: "Tervetuloa käymään", en: "Visit us", ar: "زورونا", so: "Nagu soo booqo" }
+instagramissa:      { fi: "Instagramissa", en: "On Instagram", ar: "على إنستغرام", so: "Instagram-ka" }
+kieli:              { fi: "Kieli", en: "Language", ar: "اللغة", so: "Luqadda" }
+sulje:              { fi: "Sulje", en: "Close", ar: "إغلاق", so: "Xir" }
+toiminta_kielet:    { fi: "Toimintaa kielillä", en: "Activities in", ar: "الأنشطة باللغات", so: "Hawlaha luqadaha" }
+kysyttavaa:         { fi: "Kysyttävää?", en: "Questions?", ar: "لديك سؤال؟", so: "Su'aal ma qabtaa?" }
+kysy_whatsapp:      { fi: "Vastaamme nopeimmin WhatsAppissa tai puhelimitse.", en: "We reply fastest on WhatsApp or by phone.", ar: "نرد بشكل أسرع عبر واتساب أو الهاتف.", so: "Sida ugu dhakhsaha badan waxaan uga jawaabnaa WhatsApp ama taleefan." }
+paivan_ajat:        { fi: "Päivän rukousajat", en: "Today's prayer times", ar: "مواقيت اليوم", so: "Waqtiyada maanta" }
+kieli_suomi:        { fi: "suomi", en: "Finnish", ar: "الفنلندية", so: "Finnish" }
+kieli_arabia:       { fi: "arabia", en: "Arabic", ar: "العربية", so: "Carabi" }
+kieli_somali:       { fi: "somali", en: "Somali", ar: "الصومالية", so: "Soomaali" }
+kieli_englanti:     { fi: "englanti", en: "English", ar: "الإنجليزية", so: "Ingiriisi" }
+kieli_turkki:       { fi: "turkki", en: "Turkish", ar: "التركية", so: "Turki" }
+

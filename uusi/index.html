@@ -1,0 +1,75 @@
+---
+layout: uusi
+permalink: /uusi/
+rukousajat: true
+---
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{% include u/rukousdata.html moskeija=m %}
+
+<section class="u-hero">
+  <div class="u-hero__tausta" aria-hidden="true">
+    <div class="u-kuvio"></div>
+    <svg class="u-hero__kaari" viewBox="0 0 200 300" preserveAspectRatio="xMidYMax meet"><path d="M14 300V138C14 74 62 34 100 12c38 22 86 62 86 126v162" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M34 300V144c0-52 38-88 66-106 28 18 66 54 66 106v156" fill="none" stroke="currentColor" stroke-width=".8"/></svg>
+  </div>
+  <div class="u-kehys u-hero__sisalto">
+    <div class="u-hero__teksti">
+      {% if m.hero_tunniste %}<p class="u-eyebrow u-eyebrow--vaalea">{% include kt.html arvo=m.hero_tunniste %}</p>{% endif %}
+      <h1>{% if m.hero_otsikko %}{% include kt.html arvo=m.hero_otsikko %}{% else %}{% include nimi.html moskeija=m %}{% endif %}</h1>
+      {% if m.esittely %}<p class="u-hero__esittely">{% include kt.html arvo=m.esittely %}</p>{% endif %}
+      <div class="u-hero__napit">
+        <a class="u-nappi u-nappi--kulta" href="{{ '/uusi/palvelut/' | relative_url }}">{% include k.html a="tutustu_toimintaan" %}</a>
+        {% if m.lasten_opetus.kaytossa %}<a class="u-nappi u-nappi--haamu" href="{{ '/uusi/palvelut/lasten-opetus/' | relative_url }}">{% include ikoni.html nimi="hattu" koko=18 %} {% include k.html a="ilmoita_lapsesi" %}</a>{% endif %}
+      </div>
+    </div>
+    <div class="u-hero__rukous">
+      {% include u/rukous.html linkki=true %}
+    </div>
+  </div>
+</section>
+
+<section class="u-osio u-kehys u-osio--hero-jalkeen">
+  <div class="u-osio__yla">
+    <h2>{% include k.html a="toimintamme" %}</h2>
+    <a class="u-linkki" href="{{ '/uusi/palvelut/' | relative_url }}">{% include k.html a="nav_palvelut" %} <span class="u-flip" aria-hidden="true">→</span></a>
+  </div>
+  {% include u/toiminta.html moskeija=m %}
+</section>
+
+<div class="u-kehys">{% include u/lapset.html moskeija=m %}</div>
+
+{%- assign tanaan = site.time | date: '%Y-%m-%d' -%}
+{%- assign tulevia = 0 -%}
+{%- for t in site.tapahtumat -%}{%- assign loppu = t.paiva_loppuu | default: t.paiva | date: '%Y-%m-%d' -%}{%- if loppu >= tanaan -%}{%- assign tulevia = tulevia | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{% if tulevia > 0 %}
+<section class="u-osio u-kehys">
+  <div class="u-osio__yla">
+    <h2>{% include k.html a="tulevat_tapahtumat" %}</h2>
+    <a class="u-linkki" href="{{ '/uusi/tapahtumat/' | relative_url }}">{% include k.html a="kaikki_tapahtumat" %} <span class="u-flip" aria-hidden="true">→</span></a>
+  </div>
+  {% include u/tapahtumat.html maara=3 moskeija=m %}
+</section>
+{% endif %}
+
+<section class="u-osio u-kehys u-meista">
+  <div class="u-meista__teksti">
+    <h2>{% include k.html a="meista_otsikko" %}</h2>
+    <div class="u-proosa">{% include kt.html arvo=m.meista_lyhyt md=true tagi="div" %}</div>
+    <a class="u-linkki" href="{{ '/uusi/meista/' | relative_url }}">{% include k.html a="lue_lisaa" %} <span class="u-flip" aria-hidden="true">→</span></a>
+  </div>
+  {% if m.kielet.size > 0 %}
+  <div class="u-meista__kielet">
+    <p class="u-eyebrow">{% include k.html a="toiminta_kielet" %}</p>
+    <ul class="u-sirut">
+      {% for kieli in m.kielet %}{% assign avain = 'kieli_' | append: kieli %}<li>{% if site.data.kaannokset[avain] %}{% include k.html a=avain %}{% else %}{{ kieli }}{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</section>
+
+{% include u/instagram.html moskeija=m %}
+
+<div class="u-kehys">{% include u/lahjoitus.html moskeija=m %}</div>
+
+<section class="u-osio u-kehys">
+  {% include u/vierailu.html moskeija=m %}
+</section>

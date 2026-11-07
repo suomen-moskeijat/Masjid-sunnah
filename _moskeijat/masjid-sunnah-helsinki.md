@@ -271,6 +271,7 @@ rukousajat:
 
 teema:
   logo: /tiedostot/masjid-sunnah/logo.png
+  logo_pieni: /tiedostot/masjid-sunnah/logo-640.png   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
   hero: vaalea
   paa: "#3f2717"
   paa_tumma: "#2b1a0e"
