@@ -514,10 +514,10 @@ html[lang="ar"] .u-alku__tunniste { letter-spacing: 0; font-size: 14px; }
 
 /* ---------- Aloitusnäytön tausta kuten masjidsunna.lovable.app ----------
    Valkoinen, ylhäällä hyvin vaalea kerma ja pieni kultainen hehku,
-   pieni ja haalea tähtikuvio (0,18 × 40 % kuten Lovablessa). Ei kaarta. */
+   haalea kahdeksansakarainen tähti- ja kahdeksankulmiokuvio (oma piirros, Masjidbox-näytön tyyliin). Ei kaarta. */
 .u-alku {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23D2A33B' stroke-opacity='0.072' stroke-width='1'%3E%3Cpath d='M32 4l8 20 20 8-20 8-8 20-8-20-20-8 20-8z'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2772%27 height=%2772%27 viewBox=%270 0 72 72%27%3E%3Cpath d=%27M36.0 0.0L46.6 10.5L61.5 10.5L61.5 25.4L72.0 36.0L61.5 46.6L61.5 61.5L46.6 61.5L36.0 72.0L25.4 61.5L10.5 61.5L10.5 46.6L0.0 36.0L10.5 25.4L10.5 10.5L25.4 10.5ZM49.9 41.7L41.7 49.9L30.3 49.9L22.1 41.7L22.1 30.3L30.3 22.1L41.7 22.1L49.9 30.3ZM11.1 4.6L4.6 11.1L-4.6 11.1L-11.1 4.6L-11.1 -4.6L-4.6 -11.1L4.6 -11.1L11.1 -4.6ZM83.1 4.6L76.6 11.1L67.4 11.1L60.9 4.6L60.9 -4.6L67.4 -11.1L76.6 -11.1L83.1 -4.6ZM11.1 76.6L4.6 83.1L-4.6 83.1L-11.1 76.6L-11.1 67.4L-4.6 60.9L4.6 60.9L11.1 67.4ZM83.1 76.6L76.6 83.1L67.4 83.1L60.9 76.6L60.9 67.4L67.4 60.9L76.6 60.9L83.1 67.4Z%27 fill=%27none%27 stroke=%27%23B8893F%27 stroke-opacity=%270.13%27 stroke-width=%271%27/%3E%3C/svg%3E"),
     radial-gradient(70% 60% at 50% 0%, rgb(222 187 134 / .28), transparent 70%),
     linear-gradient(#faf8f3, #ffffff);
   border-bottom: 0;
@@ -581,7 +581,7 @@ html[dir="rtl"] .u-seur__palkki span { background: linear-gradient(-90deg, var(-
 .u-sivuhero {
   color: var(--hieno);
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23D2A33B' stroke-opacity='0.072' stroke-width='1'%3E%3Cpath d='M32 4l8 20 20 8-20 8-8 20-8-20-20-8 20-8z'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2772%27 height=%2772%27 viewBox=%270 0 72 72%27%3E%3Cpath d=%27M36.0 0.0L46.6 10.5L61.5 10.5L61.5 25.4L72.0 36.0L61.5 46.6L61.5 61.5L46.6 61.5L36.0 72.0L25.4 61.5L10.5 61.5L10.5 46.6L0.0 36.0L10.5 25.4L10.5 10.5L25.4 10.5ZM49.9 41.7L41.7 49.9L30.3 49.9L22.1 41.7L22.1 30.3L30.3 22.1L41.7 22.1L49.9 30.3ZM11.1 4.6L4.6 11.1L-4.6 11.1L-11.1 4.6L-11.1 -4.6L-4.6 -11.1L4.6 -11.1L11.1 -4.6ZM83.1 4.6L76.6 11.1L67.4 11.1L60.9 4.6L60.9 -4.6L67.4 -11.1L76.6 -11.1L83.1 -4.6ZM11.1 76.6L4.6 83.1L-4.6 83.1L-11.1 76.6L-11.1 67.4L-4.6 60.9L4.6 60.9L11.1 67.4ZM83.1 76.6L76.6 83.1L67.4 83.1L60.9 76.6L60.9 67.4L67.4 60.9L76.6 60.9L83.1 67.4Z%27 fill=%27none%27 stroke=%27%23B8893F%27 stroke-opacity=%270.13%27 stroke-width=%271%27/%3E%3C/svg%3E"),
     radial-gradient(70% 60% at 50% 0%, rgb(222 187 134 / .28), transparent 70%),
     linear-gradient(#faf8f3, #ffffff);
 }
