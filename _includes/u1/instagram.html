@@ -20,7 +20,7 @@
     {% for j in d.julkaisut limit: 6 %}
     <li><button type="button" class="u-ig__ruutu" data-ig-avaa="{{ forloop.index0 }}" aria-label="{{ j.teksti | strip_newlines | truncate: 80 | escape }}">
       <img src="{{ j.kuva | relative_url }}" alt="" loading="lazy" width="320" height="320">
-      {% if j.tyyppi == "video" %}<span class="u-ig__merkki" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>{% elsif j.tyyppi == "albumi" %}<span class="u-ig__merkki" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 3h12a2 2 0 0 1 2 2v12h-2V5H7z"/><rect x="3" y="7" width="14" height="14" rx="2" fill="currentColor"/></svg></span>{% endif %}
+      {% if j.tyyppi == "video" %}<span class="u-ig__merkki" aria-hidden="true">{% include ikoni-ph.html nimi="toista" koko=18 %}</span>{% elsif j.tyyppi == "albumi" %}<span class="u-ig__merkki" aria-hidden="true">{% include ikoni-ph.html nimi="albumi" koko=16 %}</span>{% endif %}
     </button></li>
     {% endfor %}
   </ul>
@@ -31,12 +31,12 @@
   ]</script>
   <dialog class="u-ikkuna" data-ig-ikkuna aria-label="Instagram">
     <div class="u-ikkuna__sisalto">
-      <button type="button" class="u-ikkuna__sulje" data-ig-sulje><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="u-nakymaton">{% include k.html a="sulje" %}</span></button>
+      <button type="button" class="u-ikkuna__sulje" data-ig-sulje>{% include ikoni-ph.html nimi="sulje" koko=22 %}<span class="u-nakymaton">{% include k.html a="sulje" %}</span></button>
       <div class="u-ikkuna__kuva">
         <img data-ig-kuva alt="">
-        <span class="u-ikkuna__video" data-ig-video hidden><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>
-        <button type="button" class="u-ikkuna__nuoli u-ikkuna__nuoli--ed" data-ig-siirry="-1" aria-label="←"><svg class="u-flip" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button type="button" class="u-ikkuna__nuoli u-ikkuna__nuoli--seur" data-ig-siirry="1" aria-label="→"><svg class="u-flip" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <span class="u-ikkuna__video" data-ig-video hidden>{% include ikoni-ph.html nimi="toista" koko=34 %}</span>
+        <button type="button" class="u-ikkuna__nuoli u-ikkuna__nuoli--ed" data-ig-siirry="-1" aria-label="←">{% include ikoni-ph.html nimi="vasen" koko=22 luokka="u-flip" %}</button>
+        <button type="button" class="u-ikkuna__nuoli u-ikkuna__nuoli--seur" data-ig-siirry="1" aria-label="→">{% include ikoni-ph.html nimi="oikea" koko=22 luokka="u-flip" %}</button>
       </div>
       <div class="u-ikkuna__teksti">
         <p class="u-hieno" data-ig-paiva></p>

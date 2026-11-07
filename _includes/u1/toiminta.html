@@ -5,7 +5,7 @@
   {%- assign polku = c.linkki | default: '/palvelut/' | remove_first: '/' -%}
   <li>
     <a class="u-toiminta__kohta" href="{{ '/uusi-v1/' | append: polku | relative_url }}">
-      <span class="u-ikoni">{% include ikoni.html nimi=c.kuvake koko=24 %}</span>
+      <span class="u-ikoni">{% include ikoni-ph.html nimi=c.kuvake koko=24 %}</span>
       <span class="u-toiminta__teksti">
         <strong>{% include kt.html arvo=c.nimi %}</strong>
         <span>{% include kt.html arvo=c.kuvaus %}</span>

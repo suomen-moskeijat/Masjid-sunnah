@@ -6,13 +6,13 @@
   <div class="u-vierailu__tiedot">
     {% unless include.otsikko == false %}<h2>{% include k.html a="tervetuloa_kaymaan" %}</h2>{% endunless %}
     <ul class="u-yhteys">
-      {% if m.osoite and m.osoite != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni.html nimi="sijainti" koko=20 %}</span><span><small>{% include k.html a="osoite" %}</small>{{ m.osoite }}</span></li>{% endif %}
-      {% if m.puhelin and m.puhelin != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni.html nimi="puhelin" koko=20 %}</span><span><small>{% include k.html a="puhelin" %}</small><a href="tel:{{ m.puhelin | remove: ' ' }}" dir="ltr">{{ m.puhelin }}</a></span></li>{% endif %}
-      {% if m.sahkoposti and m.sahkoposti != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni.html nimi="posti" koko=20 %}</span><span><small>{% include k.html a="sahkoposti" %}</small><a href="mailto:{{ m.sahkoposti }}">{{ m.sahkoposti }}</a></span></li>{% endif %}
-      {% if m.juma and m.juma != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni.html nimi="moskeija" koko=20 %}</span><span><small>{% include k.html a="jumua" %}</small><strong dir="ltr">{{ m.juma }}</strong></span></li>{% endif %}
+      {% if m.osoite and m.osoite != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni-ph.html nimi="sijainti" koko=20 %}</span><span><small>{% include k.html a="osoite" %}</small>{{ m.osoite }}</span></li>{% endif %}
+      {% if m.puhelin and m.puhelin != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni-ph.html nimi="puhelin" koko=20 %}</span><span><small>{% include k.html a="puhelin" %}</small><a href="tel:{{ m.puhelin | remove: ' ' }}" dir="ltr">{{ m.puhelin }}</a></span></li>{% endif %}
+      {% if m.sahkoposti and m.sahkoposti != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni-ph.html nimi="posti" koko=20 %}</span><span><small>{% include k.html a="sahkoposti" %}</small><a href="mailto:{{ m.sahkoposti }}">{{ m.sahkoposti }}</a></span></li>{% endif %}
+      {% if m.juma and m.juma != "" %}<li><span class="u-ikoni u-ikoni--pieni">{% include ikoni-ph.html nimi="moskeija" koko=20 %}</span><span><small>{% include k.html a="jumua" %}</small><strong dir="ltr">{{ m.juma }}</strong></span></li>{% endif %}
     </ul>
     <div class="u-napit">
-      <a class="u-nappi u-nappi--kulta" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ m.osoite | url_encode }}" target="_blank" rel="noopener">{% include ikoni.html nimi="sijainti" koko=18 %} {% include k.html a="reittiohjeet" %}</a>
+      <a class="u-nappi u-nappi--kulta" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ m.osoite | url_encode }}" target="_blank" rel="noopener">{% include ikoni-ph.html nimi="sijainti" koko=18 %} {% include k.html a="reittiohjeet" %}</a>
       {% if wa != "" %}<a class="u-nappi u-nappi--reuna" href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">{% include u1/somekuvake.html nimi="wa" koko=18 %} WhatsApp</a>{% endif %}
     </div>
   </div>

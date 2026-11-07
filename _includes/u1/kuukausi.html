@@ -2,9 +2,9 @@
 {%- assign r = include.moskeija.rukousajat -%}
 <section class="kk" data-kk>
   <header class="kk__yla">
-    <button type="button" class="kk__siirto" data-kk-siirto="-1" aria-label="{{ site.data.kaannokset.edellinen_kuukausi.fi }}"><svg class="u-flip" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="kk__siirto" data-kk-siirto="-1" aria-label="{{ site.data.kaannokset.edellinen_kuukausi.fi }}">{% include ikoni-ph.html nimi="vasen" koko=20 luokka="u-flip" %}</button>
     <h2 class="kk__nimi" data-kk-nimi aria-live="polite">&nbsp;</h2>
-    <button type="button" class="kk__siirto" data-kk-siirto="1" aria-label="{{ site.data.kaannokset.seuraava_kuukausi.fi }}"><svg class="u-flip" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="kk__siirto" data-kk-siirto="1" aria-label="{{ site.data.kaannokset.seuraava_kuukausi.fi }}">{% include ikoni-ph.html nimi="oikea" koko=20 luokka="u-flip" %}</button>
   </header>
   <div class="kk__kaari">
     <table class="kk__taulu" data-kk-taulu></table>

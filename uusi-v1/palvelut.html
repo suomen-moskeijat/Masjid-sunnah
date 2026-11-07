@@ -9,7 +9,7 @@ permalink: /uusi-v1/palvelut/
   <ul class="u-palvelut">
     {% for p in m.palvelut %}
     <li class="u-kortti u-palvelu">
-      <span class="u-ikoni">{% include ikoni.html nimi=p.kuvake koko=24 %}</span>
+      <span class="u-ikoni">{% include ikoni-ph.html nimi=p.kuvake koko=24 %}</span>
       <h2>{% include kt.html arvo=p.nimi %}</h2>
       <p>{% include kt.html arvo=p.kuvaus %}</p>
     </li>

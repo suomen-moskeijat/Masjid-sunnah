@@ -27,7 +27,7 @@ yhteystiedot/|nav_yhteystiedot
     {% if site.kielet.size > 1 %}
     <div class="u-kieli" data-kielivalikko>
       <button type="button" class="u-kieli__nappi" aria-expanded="false" aria-haspopup="true" data-kieli-avaa>
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        {% include ikoni-ph.html nimi="maailma" koko=18 %}
         <span data-kieli-nyt>{{ site.kielet | first | upcase }}</span>
         <span class="u-nakymaton">{% include k.html a="kieli" %}</span>
       </button>
@@ -40,23 +40,23 @@ yhteystiedot/|nav_yhteystiedot
     {% endif %}
 
     <button type="button" class="u-valikkonappi" aria-expanded="false" aria-controls="u-mobiilivalikko" data-valikko-avaa>
-      <svg class="u-valikkonappi__auki" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <svg class="u-valikkonappi__kiinni" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      {% include ikoni-ph.html nimi="valikko" koko=22 luokka="u-valikkonappi__auki" %}
+      {% include ikoni-ph.html nimi="sulje" koko=22 luokka="u-valikkonappi__kiinni" %}
       <span class="u-nakymaton">{% include k.html a="valikko" %}</span>
     </button>
   </div>
 
   <div class="u-mobiilivalikko" id="u-mobiilivalikko" hidden>
     <nav class="u-kehys" aria-label="Valikko">
-      <a class="u-mv-linkki" href="{{ j }}">{% include k.html a="nav_etusivu" %}<span class="u-nuoli" aria-hidden="true">›</span></a>
+      <a class="u-mv-linkki" href="{{ j }}">{% include k.html a="nav_etusivu" %}<span class="u-nuoli" aria-hidden="true">{% include ikoni-ph.html nimi="oikea" koko=18 luokka="u-flip" %}</span></a>
       {% for l in linkit %}{% assign o = l | strip | split: '|' %}{% assign o_avain = o[1] %}
-      <a class="u-mv-linkki" href="{{ j }}{{ o[0] }}" {% if page.url contains o[0] %}aria-current="page"{% endif %}>{% include k.html a=o_avain %}<span class="u-nuoli" aria-hidden="true">›</span></a>
+      <a class="u-mv-linkki" href="{{ j }}{{ o[0] }}" {% if page.url contains o[0] %}aria-current="page"{% endif %}>{% include k.html a=o_avain %}<span class="u-nuoli" aria-hidden="true">{% include ikoni-ph.html nimi="oikea" koko=18 luokka="u-flip" %}</span></a>
       {% endfor %}
-      {% if m.lasten_opetus.kaytossa %}<a class="u-mv-linkki" href="{{ j }}palvelut/lasten-opetus/">{% include k.html a="ilmoita_lapsesi" %}<span class="u-nuoli" aria-hidden="true">›</span></a>{% endif %}
+      {% if m.lasten_opetus.kaytossa %}<a class="u-mv-linkki" href="{{ j }}palvelut/lasten-opetus/">{% include k.html a="ilmoita_lapsesi" %}<span class="u-nuoli" aria-hidden="true">{% include ikoni-ph.html nimi="oikea" koko=18 luokka="u-flip" %}</span></a>{% endif %}
       <div class="u-mv-napit">
         <a class="u-nappi u-nappi--kulta" href="{{ j }}lahjoita/">{% include k.html a="nav_lahjoita" %}</a>
         {% if wa != "" %}<a class="u-nappi u-nappi--reuna" href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">{% include u1/somekuvake.html nimi="wa" %} WhatsApp</a>{% endif %}
-        {% if m.puhelin and m.puhelin != "" %}<a class="u-nappi u-nappi--reuna" href="tel:{{ m.puhelin | remove: ' ' }}">{% include ikoni.html nimi="puhelin" koko=18 %} {% include k.html a="soita" %}</a>{% endif %}
+        {% if m.puhelin and m.puhelin != "" %}<a class="u-nappi u-nappi--reuna" href="tel:{{ m.puhelin | remove: ' ' }}">{% include ikoni-ph.html nimi="puhelin" koko=18 %} {% include k.html a="soita" %}</a>{% endif %}
       </div>
     </nav>
   </div>
