@@ -1,6 +1,6 @@
 # Sivuston julkaisu GitHub Pagesiin.
 # - Ajetaan aina kun main-haaraan tulee muutos (myös Pages CMS:stä),
-#   neljä kertaa päivässä (uudet Instagram-julkaisut ja rukousajat) ja käsin (Actions → Run workflow).
+#   kerran tunnissa (uudet Instagram-julkaisut ja rukousajat) ja käsin (Actions → Run workflow).
 # - Ennen rakentamista haetaan moskeijoiden uusimmat Instagram-julkaisut ja
 #   seuraavan viikon viralliset rukous- ja iqamah-ajat Masjidboxista (kenttä masjidbox).
 # Käyttöönotto: Settings → Pages → Build and deployment → Source: "GitHub Actions".
@@ -10,7 +10,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "23 3,9,15,21 * * *"
+    - cron: "17 * * * *"   # kerran tunnissa: rukousajat Masjidboxista ja Instagram-julkaisut
   workflow_dispatch:
 
 permissions:
