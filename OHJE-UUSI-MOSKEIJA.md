@@ -28,6 +28,11 @@ Sivusto tekee samoin. Taulukko luetaan rukousajat.fi:n sovelluksesta joka ajossa
 se päivittyy, sivu seuraa. Jos haku joskus epäonnistuu, käytetään viimeisimpiä haettuja aikoja
 ja niiden jälkeen laskentaa.
 
+**Tarkistettu oikeaa rukousajat.fi:tä vasten (7.11.2026):** kaupunkia vaihtamalla
+Tampere, Turku, Oulu, Jyväskylä ja Kuopio täsmäsivät sivuston laskentaan minuutilleen;
+Espoo ja Vantaa näyttävät rukousajat.fi:ssä Helsingin taulukon, jonka sivusto hakee
+lähteellä `rukousajat`. Jokainen moskeija saa siis ajat oman sijaintinsa mukaan.
+
 Ilman lähdettä tarvitaan siis vain moskeijan sijainti. Laskennan oletusasetukset ovat samat kuin
 rukousajat.fi:ssä: `laskentatapa: MuslimWorldLeague`, `madhab: Shafi` ja
 `korkeat_leveysasteet: TwilightAngle` (kesän valoisat yöt). Niitä voi muuttaa, jos moskeija
