@@ -1,7 +1,8 @@
 # Sivuston julkaisu GitHub Pagesiin.
 # - Ajetaan aina kun main-haaraan tulee muutos (myös Pages CMS:stä),
-#   neljä kertaa päivässä (uudet Instagram-julkaisut) ja käsin (Actions → Run workflow).
-# - Ennen rakentamista haetaan moskeijoiden uusimmat Instagram-julkaisut.
+#   neljä kertaa päivässä (uudet Instagram-julkaisut ja rukousajat) ja käsin (Actions → Run workflow).
+# - Ennen rakentamista haetaan moskeijoiden uusimmat Instagram-julkaisut ja
+#   seuraavan viikon viralliset rukous- ja iqamah-ajat Masjidboxista (kenttä masjidbox).
 # Käyttöönotto: Settings → Pages → Build and deployment → Source: "GitHub Actions".
 name: Julkaise sivusto
 
@@ -31,6 +32,9 @@ jobs:
 
       - name: Hae uusimmat Instagram-julkaisut
         run: python3 .github/scripts/instagram.py
+
+      - name: Hae rukous- ja iqamah-ajat Masjidboxista
+        run: python3 .github/scripts/masjidbox.py
 
       - uses: actions/configure-pages@v5
 

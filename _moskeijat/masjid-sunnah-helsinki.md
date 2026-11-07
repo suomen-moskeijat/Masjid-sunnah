@@ -13,6 +13,7 @@ sijainti:   # likimääräinen – tarkista kartalta
   lon: 25.0102
 puhelin: "+358 45 278 4866"
 whatsapp: "+358 45 278 4866"
+masjidbox: masjid-sunnah-helsinki   # masjidbox.com/prayer-times/<tämä>: rukous- ja iqamah-ajat haetaan sieltä automaattisesti
 sahkoposti: ""
 kielet: [suomi, arabia, somali]
 juma: ""          # perjantairukouksen aika, esim. "13.30"
