@@ -70,6 +70,9 @@ some_teksti:        { fi: "Uusimmat julkaisut ja videot moskeijan elämästä.",
 some_lupa:          { fi: "Julkaisut näytetään suoraan moskeijan somesta. Ne ladataan ulkopuolisesta palvelusta, joka voi asettaa evästeitä. Omaa tiliä ei tarvita.", en: "Posts are shown directly from the mosque's social media. They are loaded from an external service that may set cookies. No account needed.", ar: "تُعرض المنشورات مباشرة من حسابات المسجد، وتُحمَّل من خدمة خارجية قد تستخدم ملفات تعريف الارتباط. لا حاجة إلى حساب.", so: "Qoraallada waxaa si toos ah looga soo bandhigaa baraha masjidka. Waxaa laga soo raraa adeeg dibadeed oo isticmaali kara cookies. Akoon looma baahna." }
 some_nayta:         { fi: "Näytä julkaisut", en: "Show posts", ar: "عرض المنشورات", so: "Tus qoraallada" }
 some_muista:        { fi: "Muista valintani", en: "Remember my choice", ar: "تذكّر اختياري", so: "Xasuuso doorashadayda" }
+ig_pyyhkaise:       { fi: "Pyyhkäise nähdäksesi lisää julkaisuja", en: "Swipe to see more posts", ar: "اسحب لرؤية المزيد من المنشورات", so: "U jiid si aad u aragto qoraallo kale" }
+ig_avaa_julkaisu:   { fi: "Avaa julkaisu Instagramissa", en: "Open post on Instagram", ar: "افتح المنشور في إنستغرام", so: "Ku fur qoraalka Instagram" }
+ig_koko_profiili:   { fi: "Kaikki julkaisut", en: "All posts", ar: "كل المنشورات", so: "Dhammaan qoraallada" }
 seuraa_meita:       { fi: "Seuraa meitä", en: "Follow us", ar: "تابعونا", so: "Nagala soco" }
 
 # --- Artikkelit ---

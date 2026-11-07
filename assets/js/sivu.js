@@ -206,6 +206,17 @@
     });
   });
 
+  /* Instagram-karusellin nuolet */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-ig-siirto]');
+    if (!b) return;
+    var k = b.closest('.some__paneeli').querySelector('[data-ig-karuselli]');
+    if (!k) return;
+    var kortti = k.querySelector('.ig-kortti');
+    var suunta = Number(b.dataset.igSiirto) * (document.documentElement.dir === 'rtl' ? -1 : 1);
+    k.scrollBy({ left: suunta * ((kortti ? kortti.offsetWidth : 300) + 16), behavior: 'smooth' });
+  });
+
   /* 8. Kopioi-painike (esim. tilinumero) */
   document.querySelectorAll('[data-kopioi]').forEach(function (b) {
     b.addEventListener('click', function () {

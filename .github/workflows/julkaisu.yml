@@ -1,0 +1,53 @@
+# Sivuston julkaisu GitHub Pagesiin.
+# - Ajetaan aina kun main-haaraan tulee muutos (myös Pages CMS:stä),
+#   neljä kertaa päivässä (uudet Instagram-julkaisut) ja käsin (Actions → Run workflow).
+# - Ennen rakentamista haetaan moskeijoiden uusimmat Instagram-julkaisut.
+# Käyttöönotto: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: Julkaise sivusto
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 3,9,15,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  rakenna:
+    # Vain main-haarasta (ajastettu ajo käyttää oletushaaraa, joka voi olla muu).
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Hae uusimmat Instagram-julkaisut
+        run: python3 .github/scripts/instagram.py
+
+      - uses: actions/configure-pages@v5
+
+      - name: Rakenna sivusto (Jekyll)
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - uses: actions/upload-pages-artifact@v3
+
+  julkaise:
+    needs: rakenna
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.julkaisu.outputs.page_url }}
+    steps:
+      - id: julkaisu
+        uses: actions/deploy-pages@v4
