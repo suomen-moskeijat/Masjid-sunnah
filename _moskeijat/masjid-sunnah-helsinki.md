@@ -284,18 +284,9 @@ rukousajat:
   korkeat_leveysasteet: TwilightAngle   # kuten rukousajat.fi
 
 teema:
+  # Värit ja fontit: pohjan oletukset (Lovable-sivun värit). Omat värit: paa, korostus, korostus_vaalea …
   logo: /tiedostot/masjid-sunnah/logo.png
   logo_pieni: /tiedostot/masjid-sunnah/logo-640.png
   merkki: /tiedostot/masjid-sunnah/merkki.png   # logo ilman laatikkoa, läpinäkyvä (uusi-v2:n yläosa)   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
   hero: vaalea
-  paa: "#3f2717"
-  paa_tumma: "#2b1a0e"
-  korostus: "#debb86"
-  korostus_vaalea: "#faf1df"
-  tausta: "#faf9f5"
-  raja: "#ebe3da"
-  hieno: "#796456"
-  fontit_url: "https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Kufi+Arabic:wght@500;600;700&display=swap"
-  fontti_otsikot: '"Sora", "Noto Kufi Arabic", system-ui, sans-serif'
-  fontti_teksti: '"Manrope", "IBM Plex Sans Arabic", system-ui, sans-serif'
 ---
