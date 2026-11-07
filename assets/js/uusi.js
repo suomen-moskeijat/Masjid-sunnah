@@ -200,7 +200,7 @@
       tbody.textContent = '';
       var tiivis = rk.classList.contains('rk--tiivis');
       var nousu = rk.querySelector('[data-rk-nousu]');
-      if (nousu) nousu.textContent = '☀ ' + aika(t.sunrise);
+      if (nousu) nousu.textContent = N().sunrise + ' ' + aika(t.sunrise);
       RUKOUKSET.forEach(function (n) {
         if (tiivis && n === 'sunrise') return; // tiiviissä kortissa auringonnousu alalaidassa
         var tr = document.createElement('tr');
