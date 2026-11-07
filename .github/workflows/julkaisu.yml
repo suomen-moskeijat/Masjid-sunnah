@@ -2,7 +2,8 @@
 # - Ajetaan aina kun main-haaraan tulee muutos (myös Pages CMS:stä),
 #   kerran tunnissa (uudet Instagram-julkaisut ja rukousajat) ja käsin (Actions → Run workflow).
 # - Ennen rakentamista haetaan moskeijoiden uusimmat Instagram-julkaisut ja
-#   seuraavan viikon viralliset rukous- ja iqamah-ajat Masjidboxista (kenttä masjidbox).
+#   viralliset rukous- ja iqamah-ajat moskeijan omasta palvelusta (rukousajat.lahde:
+#   masjidbox tai mawaqit); ilman lähdettä sivu laskee ajat koordinaateista.
 # Käyttöönotto: Settings → Pages → Build and deployment → Source: "GitHub Actions".
 name: Julkaise sivusto
 
@@ -33,8 +34,8 @@ jobs:
       - name: Hae uusimmat Instagram-julkaisut
         run: python3 .github/scripts/instagram.py
 
-      - name: Hae rukous- ja iqamah-ajat Masjidboxista
-        run: python3 .github/scripts/masjidbox.py
+      - name: Hae rukous- ja iqamah-ajat (Masjidbox / Mawaqit)
+        run: python3 .github/scripts/rukousajat.py
 
       - uses: actions/configure-pages@v5
 

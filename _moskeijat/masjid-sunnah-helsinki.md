@@ -13,7 +13,6 @@ sijainti:   # likimääräinen – tarkista kartalta
   lon: 25.0102
 puhelin: "+358 45 278 4866"
 whatsapp: "+358 45 278 4866"
-masjidbox: masjid-sunnah-helsinki   # masjidbox.com/prayer-times/<tämä>: rukous- ja iqamah-ajat haetaan sieltä automaattisesti
 sahkoposti: ""
 kielet: [suomi, arabia, somali]
 juma: ""          # perjantairukouksen aika, esim. "13.30"
@@ -274,7 +273,10 @@ some:
   upotuskoodi: ""
 
 rukousajat:
-  aikataulu: masjid-sunnah-helsinki   # virallinen aikataulu: _data/aikataulut/masjid-sunnah-helsinki/
+  # Mistä ajat tulevat: masjidbox | mawaqit | taulukko | laskenta (ks. OHJE-UUSI-MOSKEIJA.md)
+  lahde: masjidbox
+  tunnus: masjid-sunnah-helsinki      # masjidbox.com/prayer-times/<tunnus>
+  aikataulu: masjid-sunnah-helsinki   # haetut ajat: _data/aikataulut/masjid-sunnah-helsinki/ (oletus: moskeijan slug)
   virallinen_url: "https://masjidbox.com/prayer-times/masjid-sunnah-helsinki"
   iqamah_oletus: { fajr: 10, dhuhr: 10, asr: 10, maghrib: 5, isha: 10 }
   laskentatapa: MuslimWorldLeague     # varalla, jos kuukauden aikataulua ei ole lisätty

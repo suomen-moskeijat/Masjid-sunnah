@@ -139,7 +139,7 @@ content:
         fields:
           - { name: nimi, label: Otsikko, type: object, fields: *kielet_rivi }
           - { name: kuvaus, label: Kuvaus, type: object, fields: *kielet_teksti }
-      - { name: galleria, label: Kuvagalleria, type: image, list: true }
+      - { name: galleria, label: Kuvagalleria (omat kuvat; Mawaqitin kuvat lisätään automaattisesti), type: image, list: true }
 
       # --- Opetus ja palvelut ---
       - { name: palvelut_esittely, label: Palvelusivun johdanto, type: object, fields: *kielet_teksti }
@@ -197,7 +197,14 @@ content:
         label: Rukousajat
         type: object
         fields:
-          - { name: aikataulu, label: Virallisen aikataulun kansio, type: string, description: "Kansion nimi _data/aikataulut/-kansiossa. Kuukauden CSV-tiedosto, esim. 2026-12.csv" }
+          - name: lahde
+            label: Mistä rukousajat tulevat
+            type: select
+            description: "masjidbox / mawaqit = ajat ja iqamah haetaan automaattisesti kerran tunnissa; taulukko = omat CSV-tiedostot; laskenta = sivu laskee ajat koordinaateista"
+            options:
+              values: [masjidbox, mawaqit, taulukko, laskenta]
+          - { name: tunnus, label: Moskeijan tunnus palvelussa, type: string, description: "Masjidbox: osoitteen masjidbox.com/prayer-times/TUNNUS loppuosa. Mawaqit: osoitteen mawaqit.net/fi/TUNNUS loppuosa." }
+          - { name: aikataulu, label: Aikataulukansio (valinnainen), type: string, description: "Oletus on moskeijan tiedostonimi. Kansio _data/aikataulut/-kansiossa, kuukauden CSV esim. 2026-12.csv" }
           - { name: virallinen_url, label: Linkki viralliseen aikatauluun (esim. Masjidbox), type: string }
           - name: iqamah_oletus
             label: Iqamah minuutteina rukousajan jälkeen (jos aikataulussa ei ole iqamah-aikaa)

@@ -11,7 +11,7 @@ Merkitse ylös, mikä ei toimi tai näyttää oudolta (sivu, kieli, puhelinmalli
 ## 1. Mitä on uutta tai muuttunut Lovableen verrattuna
 
 **Selvimmät erot Lovableen** (tarkistettu molemmista sivuista):
-- **Rukousajat suoraan moskeijan Masjidboxista.** Viralliset adhan- ja iqamah-ajat (perjantaina Jumuah) päivittyvät automaattisesti kerran tunnissa. Kun moskeija muuttaa aikoja Masjidboxissa, sivu seuraa perässä.
+- **Rukousajat suoraan moskeijan omasta palvelusta (Masjidbox tai Mawaqit).** Viralliset adhan- ja iqamah-ajat (perjantaina Jumuah) päivittyvät automaattisesti kerran tunnissa. Kun moskeija muuttaa aikoja Masjidboxissa, sivu seuraa perässä.
 - **Instagram-julkaisut näkyvät oikeasti.** Lovablessa lukee "Uusimpien julkaisujen automaattinen näyttö otetaan käyttöön…"; uudessa sivussa uusimmat julkaisut haetaan automaattisesti ja kuvan saa auki isona.
 - **Lomakkeet:** lasten opetukseen ilmoittautuminen ja Kysy moskeijalta.
 - **Ylläpito:** ilmainen (GitHub Pages), sisältöä voi muokata selaimessa Pages CMS:llä ilman koodia, ja sama pohja sopii kaikille moskeijoille.

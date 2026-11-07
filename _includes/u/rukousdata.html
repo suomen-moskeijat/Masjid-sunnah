@@ -6,7 +6,8 @@
 {%- assign r = m.rukousajat -%}
 {%- assign s = r.saadot -%}
 {%- assign aikataulu = nil -%}
-{%- if r.aikataulu and r.aikataulu != "" -%}{%- assign aikataulu = site.data.aikataulut[r.aikataulu] -%}{%- endif -%}
+{%- assign kansio = r.aikataulu | default: m.slug -%}{%- comment -%} oletus: moskeijan slug {%- endcomment -%}
+{%- if kansio and kansio != "" -%}{%- assign aikataulu = site.data.aikataulut[kansio] -%}{%- endif -%}
 <script type="application/json" id="rk-data">{
   "lat": {{ m.sijainti.lat | default: "null" }}, "lon": {{ m.sijainti.lon | default: "null" }},
   "laskentatapa": {{ r.laskentatapa | default: "MuslimWorldLeague" | jsonify }},

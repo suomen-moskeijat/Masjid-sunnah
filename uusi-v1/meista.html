@@ -27,12 +27,7 @@ permalink: /uusi-v1/meista/
   </section>
   {% endif %}
 
-  {% if m.galleria.size > 0 %}
-  <section class="u-osio">
-    <div class="u-osio__yla"><h2>{% include k.html a="galleria" %}</h2></div>
-    <div class="u-galleria">{% for kuva in m.galleria %}<a href="{{ kuva | relative_url }}" target="_blank"><img src="{{ kuva | relative_url }}" alt="" loading="lazy"></a>{% endfor %}</div>
-  </section>
-  {% endif %}
+  {% include u1/galleria.html moskeija=m %}
 
   {% include u1/lahjoitus.html moskeija=m %}
 </div>
