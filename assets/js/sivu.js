@@ -206,15 +206,58 @@
     });
   });
 
-  /* Instagram-karusellin nuolet */
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-ig-siirto]');
-    if (!b) return;
-    var k = b.closest('.some__paneeli').querySelector('[data-ig-karuselli]');
-    if (!k) return;
-    var kortti = k.querySelector('.ig-kortti');
-    var suunta = Number(b.dataset.igSiirto) * (document.documentElement.dir === 'rtl' ? -1 : 1);
-    k.scrollBy({ left: suunta * ((kortti ? kortti.offsetWidth : 300) + 16), behavior: 'smooth' });
+  /* Instagram-galleria: napautus avaa julkaisun isona, nuolet / pyyhkäisy selaa. */
+  document.querySelectorAll('[data-ig-galleria]').forEach(function (g) {
+    var data = [];
+    try { data = JSON.parse(g.querySelector('[data-ig-json]').textContent); } catch (e) { return; }
+    var ikkuna = g.querySelector('[data-ig-ikkuna]');
+    if (!ikkuna || typeof ikkuna.showModal !== 'function') return; // vanha selain: ruudut eivät avaudu
+    var nyt = 0, kuva = ikkuna.querySelector('[data-ig-kuva]');
+    var loc = { fi: 'fi-FI', en: 'en-GB', ar: 'ar-u-nu-latn', so: 'so-SO' };
+
+    function nayta(i) {
+      nyt = (i + data.length) % data.length;
+      var j = data[nyt], video = j.tyyppi === 'video';
+      kuva.src = j.kuva;
+      ikkuna.querySelector('[data-ig-teksti]').textContent = j.teksti || '';
+      var pv = '';
+      if (j.paiva) { try { pv = new Intl.DateTimeFormat(loc[html.lang] || 'fi-FI', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(j.paiva + 'T12:00:00Z')); } catch (e) { pv = j.paiva; } }
+      ikkuna.querySelector('[data-ig-paiva]').textContent = pv;
+      ikkuna.querySelector('[data-ig-video]').hidden = !video;
+      ikkuna.querySelector('[data-ig-linkki-kuva]').hidden = video;
+      ikkuna.querySelector('[data-ig-linkki-video]').hidden = !video;
+      ikkuna.querySelector('[data-ig-linkki]').href = 'https://www.instagram.com/' + (video ? 'reel/' : 'p/') + j.koodi + '/';
+      ikkuna.querySelectorAll('[data-ig-siirry]').forEach(function (b) { b.disabled = data.length < 2; });
+      ikkuna.querySelector('.ig-ikkuna__teksti').scrollTop = 0;
+    }
+    function avaa(i) { nayta(i); ikkuna.showModal(); html.classList.add('ig-auki'); }
+    function sulje() { ikkuna.close(); }
+
+    g.querySelectorAll('[data-ig-avaa]').forEach(function (b) {
+      b.addEventListener('click', function () { avaa(Number(b.dataset.igAvaa)); });
+    });
+    ikkuna.addEventListener('close', function () { html.classList.remove('ig-auki'); });
+    ikkuna.querySelector('[data-ig-sulje]').addEventListener('click', sulje);
+    ikkuna.addEventListener('click', function (e) { if (e.target === ikkuna) sulje(); }); // taustan napautus
+    ikkuna.querySelectorAll('[data-ig-siirry]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var suunta = Number(b.dataset.igSiirry) * (html.dir === 'rtl' ? -1 : 1);
+        nayta(nyt + suunta);
+      });
+    });
+    ikkuna.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') nayta(nyt + (html.dir === 'rtl' ? -1 : 1));
+      if (e.key === 'ArrowLeft') nayta(nyt - (html.dir === 'rtl' ? -1 : 1));
+    });
+    // Pyyhkäisy kuvan päällä
+    var alkuX = null;
+    var alue = ikkuna.querySelector('.ig-ikkuna__kuva');
+    alue.addEventListener('touchstart', function (e) { alkuX = e.touches[0].clientX; }, { passive: true });
+    alue.addEventListener('touchend', function (e) {
+      if (alkuX === null) return;
+      var dx = e.changedTouches[0].clientX - alkuX; alkuX = null;
+      if (Math.abs(dx) > 40) nayta(nyt + (dx < 0 ? 1 : -1) * (html.dir === 'rtl' ? -1 : 1));
+    });
   });
 
   /* 8. Kopioi-painike (esim. tilinumero) */

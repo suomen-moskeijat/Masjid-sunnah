@@ -10,6 +10,8 @@
     - TikTok:   some.tiktok (profiilin osoite) -> profiilin uusimmat videot
     - Instagram: some.instagram (profiilin osoite) -> profiilin uusimmat julkaisut
                  (Instagramin oma profiiliupotus, ei vaadi rekisteröitymistä)
+  Kun julkaisut on haettu (.github/scripts/instagram.py), Instagram näytetään
+  omana galleriana (instagram-galleria.html) ilman upotuksia.
   Lisäksi: some.instagram_julkaisut (yksittäiset julkaisut/julisteet nostoina)
            tai some.upotuskoodi (minkä tahansa syötewidgetin koodi)
 {%- endcomment -%}
@@ -23,8 +25,10 @@
 {%- assign ig_kayttaja = ig | split: '?' | first | split: 'instagram.com/' | last | remove: '/' | remove: '@' | downcase -%}
 {%- assign ig_avain = ig_kayttaja | replace: '.', '_' -%}
 {%- assign ig_data = site.data.instagram[ig_avain] -%}
+{%- assign ig_galleria = false -%}
+{%- if ig_data.julkaisut.size > 0 and widget == "" -%}{%- assign ig_galleria = true -%}{%- endif -%}
 {%- assign ig_upotus = some.instagram_julkaisut.size | default: 0 -%}
-{%- if ig_kayttaja != "" -%}{%- assign ig_upotus = ig_upotus | plus: 1 -%}{%- endif -%}
+{%- if ig_kayttaja != "" and ig_galleria == false -%}{%- assign ig_upotus = ig_upotus | plus: 1 -%}{%- endif -%}
 {%- if widget != "" -%}{%- assign ig_upotus = ig_upotus | plus: 1 -%}{%- endif -%}
 {%- assign kaikki = fb | append: ig | append: yt | append: ytid | append: tt | append: widget -%}
 {%- if kaikki != "" or ig_upotus > 0 -%}
@@ -32,7 +36,8 @@
   <h2 class="osio__otsikko">{% include k.html a="some_otsikko" %}</h2>
   <div class="kortti some">
     <p class="some__johdanto">{% include k.html a="some_teksti" %}</p>
-    {% include somelinkit.html moskeija=include.moskeija %}
+    {% include somelinkit.html moskeija=include.moskeija ilman_ig=ig_galleria %}
+    {% if ig_galleria %}{% include instagram-galleria.html data=ig_data %}{% endif %}
 
     {%- assign upotettavia = 0 -%}
     {%- if fb != "" -%}{%- assign upotettavia = upotettavia | plus: 1 -%}{%- endif -%}
@@ -65,28 +70,7 @@
       {% if ig_upotus > 0 %}
       <div class="some__paneeli" data-paneeli="ig" role="tabpanel" hidden>
         <template>
-          {% if ig_data.julkaisut.size > 0 and widget == "" %}
-          {%- comment -%} Uusimmat julkaisut isoina kortteina (haetaan automaattisesti, ks. .github/scripts/instagram.py) {%- endcomment -%}
-          <p class="ig-vihje hienoinen">{% include k.html a="ig_pyyhkaise" %}</p>
-          <div class="ig-karuselli" data-ig-karuselli>
-            {% for j in ig_data.julkaisut %}
-            <div class="ig-kortti">
-              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/{{ j.koodi }}/?utm_source=ig_embed" data-instgrm-version="14" data-instgrm-captioned>
-                <a class="ig-varalla" href="https://www.instagram.com/p/{{ j.koodi }}/" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
-                  <span>{% include k.html a="ig_avaa_julkaisu" %}</span>
-                </a>
-              </blockquote>
-            </div>
-            {% endfor %}
-          </div>
-          <div class="ig-nuolet">
-            <button type="button" class="nappi nappi--toissijainen nappi--pieni" data-ig-siirto="-1" aria-label="←">←</button>
-            <a class="nappi nappi--toissijainen nappi--pieni" href="https://www.instagram.com/{{ ig_kayttaja }}/" target="_blank" rel="noopener">{% include k.html a="ig_koko_profiili" %}</a>
-            <button type="button" class="nappi nappi--toissijainen nappi--pieni" data-ig-siirto="1" aria-label="→">→</button>
-          </div>
-          <script async src="https://www.instagram.com/embed.js"></script>
-          {% elsif ig_kayttaja != "" and widget == "" %}
+          {% if ig_kayttaja != "" and widget == "" %}
           <iframe class="ig-profiili" title="Instagram @{{ ig_kayttaja }}" src="https://www.instagram.com/{{ ig_kayttaja }}/embed/" loading="lazy" allowtransparency="true"></iframe>
           {% endif %}
           {% if some.instagram_julkaisut.size > 0 %}
