@@ -232,10 +232,19 @@
       rk.querySelector('[data-rk-palkki]').style.width = (osuus * 100).toFixed(1) + '%';
     });
     // Etusivun aloitusnäytön laskuri
+    var jumua = !s.huomenna && nykytila.tanaan.jumua && s.nimi === 'dhuhr';
+    var osat = kesto(s.aika - nyt).split(':');
+    var iqa = !s.huomenna && nykytila.tanaan.iqamah ? nykytila.tanaan.iqamah[s.nimi] : null;
     kaikki('[data-laskuri]').forEach(function (l) {
-      l.querySelector('[data-laskuri-nimi]').textContent = nimi;
-      l.querySelector('[data-laskuri-klo]').textContent = N().klo + ' ' + aika(s.aika);
-      l.querySelector('[data-laskuri-jaljella]').textContent = kesto(s.aika - nyt);
+      l.querySelector('[data-laskuri-nimi]').textContent = rukousNimi(s.nimi, jumua);
+      var hm = l.querySelector('[data-laskuri-huomenna]'); hm.hidden = !s.huomenna; hm.textContent = N().huomenna;
+      l.querySelector('[data-laskuri-ar]').textContent = jumua ? ARABIAKSI.jumua : ARABIAKSI[s.nimi];
+      l.querySelector('[data-laskuri-t]').textContent = osat[0];
+      l.querySelector('[data-laskuri-m]').textContent = osat[1];
+      l.querySelector('[data-laskuri-s]').textContent = osat[2];
+      l.querySelector('[data-laskuri-adhan]').textContent = aika(s.aika);
+      l.querySelector('[data-laskuri-iqamah]').hidden = !iqa;
+      if (iqa) l.querySelector('[data-laskuri-iqamah-aika]').textContent = aika(iqa);
     });
   }
 
