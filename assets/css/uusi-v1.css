@@ -575,3 +575,25 @@ html[dir="rtl"] .u-seur__palkki span { background: linear-gradient(-90deg, var(-
   .u-alku__napit { margin-top: 14px; gap: 10px; }
   .u-alku__napit .u-nappi { min-height: 50px; padding-block: 12px; }
 }
+
+/* ---------- Alasivut samaan ilmeeseen kuin etusivu ---------- */
+/* Otsikkoalue: sama vaalea tausta kuin etusivulla (Lovable), tumma teksti, ei isoja tähtiä */
+.u-sivuhero {
+  color: var(--hieno);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23D2A33B' stroke-opacity='0.072' stroke-width='1'%3E%3Cpath d='M32 4l8 20 20 8-20 8-8 20-8-20-20-8 20-8z'/%3E%3Crect x='20' y='20' width='24' height='24' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(70% 60% at 50% 0%, rgb(222 187 134 / .28), transparent 70%),
+    linear-gradient(#faf8f3, #ffffff);
+}
+.u-sivuhero .u-kuvio { display: none; }
+.u-sivuhero h1 { color: var(--paa); }
+.u-sivuhero .u-eyebrow--vaalea { color: var(--kulta-teksti); }
+
+/* Alapalkki kuten Lovablessa: tasainen tumma ruskea ilman kuviota */
+.u-ala { background: var(--paa); }
+.u-ala .u-kuvio { display: none; }
+
+/* Rukousaikasivu: sama Seuraava rukous -kortti kuin etusivulla, taulukko sen alla */
+.u-rukoussivu__tanaan .u-seur { width: 100%; margin-top: 0; }
+.u-rukoussivu__tanaan .rk { margin-top: 16px; }
+.u-rukoussivu__tanaan .rk__seuraava { display: none; }
