@@ -56,7 +56,7 @@
 
   /* Pikanapit piiloon, kun rukousaikataulu tai lomake on näkyvissä (eivät peitä tietoja) */
   var pikanapit = document.querySelector('[data-pikanapit]');
-  var suojatut = kaikki('.u-etu, [data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
+  var suojatut = kaikki('[data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
   if (pikanapit && suojatut.length && 'IntersectionObserver' in window) {
     var nakyvat = new Set();
     var io = new IntersectionObserver(function (havainnot) {
@@ -232,28 +232,6 @@
       rk.querySelector('[data-rk-jaljella]').textContent = kesto(s.aika - nyt);
       rk.querySelector('[data-rk-palkki]').style.width = (osuus * 100).toFixed(1) + '%';
     });
-    var mihrab = document.querySelector('[data-mihrab]');
-    if (mihrab) {
-      var iqa = !s.huomenna && nykytila.tanaan.iqamah ? nykytila.tanaan.iqamah[s.nimi] : null;
-      mihrab.querySelector('[data-mihrab-nimi]').textContent = nimi;
-      mihrab.querySelector('[data-mihrab-aika]').textContent = aika(s.aika);
-      var iq = mihrab.querySelector('[data-mihrab-iqamah]');
-      iq.hidden = !iqa;
-      if (iqa) iq.querySelector('[data-mihrab-iqamah-aika]').textContent = aika(iqa);
-      mihrab.querySelector('[data-mihrab-jaljella]').textContent = jaljellaTeksti(s.aika - nyt);
-    }
-  }
-
-  // "1 t 5 min jäljellä" – minuuttitarkkuus riittää, ei raksuttavia sekunteja
-  var JALJELLA = {
-    fi: ['t', 'min', function (t) { return t + ' jäljellä'; }],
-    en: ['h', 'min', function (t) { return 'in ' + t; }],
-    ar: ['س', 'د', function (t) { return 'بعد ' + t; }],
-    so: ['saac', 'daq', function (t) { return t + ' ka hadhay'; }]
-  };
-  function jaljellaTeksti(ms) {
-    var j = JALJELLA[kieli()] || JALJELLA.fi, min = Math.max(1, Math.ceil(ms / 60000)), h = Math.floor(min / 60), m = min % 60;
-    return j[2]((h ? h + ' ' + j[0] + (m ? ' ' : '') : '') + (m ? m + ' ' + j[1] : ''));
   }
 
   // Kuukausitaulukko
