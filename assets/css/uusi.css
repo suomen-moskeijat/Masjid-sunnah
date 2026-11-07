@@ -646,3 +646,41 @@ html[lang="ar"] .rk__eyebrow { font-size: 14px; }
   }
 }
 @keyframes u-sytty { from { opacity: 0; filter: brightness(.4); } to { opacity: 1; filter: none; } }
+
+/* ---------- 17. Vaalea yläosa (teema.hero: vaalea) – kuten rukoussali: vaalea syvennys, kultaiset paneelit ---------- */
+.u-hero--vaalea { color: var(--teksti); --kaari-kulta: color-mix(in srgb, var(--kulta) 78%, var(--paa)); }
+.u-hero--vaalea .u-hero__tausta { background: linear-gradient(180deg, var(--kulta-vaalea), color-mix(in srgb, var(--kulta-vaalea) 45%, var(--tausta)) 70%, var(--tausta)); }
+.u-hero--vaalea .u-hero__tausta::after { background: radial-gradient(closest-side, rgb(255 255 255 / .9), transparent); }
+.u-hero--vaalea .u-kuvio { opacity: .16; }
+.u-hero--vaalea .u-hero__kaari { color: var(--kaari-kulta); opacity: .22; }
+.u-hero--vaalea h1 { color: var(--paa); }
+.u-hero--vaalea .u-hero__esittely { color: var(--hieno); }
+.u-hero--vaalea .u-eyebrow--vaalea { color: var(--kulta-teksti); }
+.u-hero--vaalea .u-nappi--haamu { background: var(--pinta); color: var(--paa); border-color: var(--raja); }
+.u-hero--vaalea .u-nappi--haamu:hover { border-color: var(--kulta); background: var(--kulta-vaalea); }
+@media (max-width: 1023px) {
+  .u-hero--vaalea .u-hero__tausta::after { left: -15vw; top: 22%; }
+  .u-hero--vaalea .u-kaari { color: var(--kaari-kulta); }
+  .u-hero--vaalea .u-kaari__valo { fill: rgb(255 255 255 / .75); }
+  .u-hero--vaalea .u-kaari__sisa { opacity: .55; }
+  .u-hero--vaalea .u-kaari__otsikko { color: var(--kulta-teksti); }
+  .u-hero--vaalea .u-kaari__nimi { color: var(--paa); }
+  .u-hero--vaalea .u-kaari__aika {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--kulta) 70%, var(--paa)) 5%, color-mix(in srgb, var(--kulta) 30%, var(--paa)) 95%);
+    -webkit-background-clip: text; background-clip: text;
+    filter: drop-shadow(0 8px 18px color-mix(in srgb, var(--kulta) 30%, transparent));
+  }
+  .u-hero--vaalea .u-kaari__iqamah { color: var(--hieno); }
+  .u-hero--vaalea .u-kaari__iqamah span[dir] { color: var(--paa); }
+  .u-hero--vaalea .u-kaari__laskuri { background: var(--pinta); border-color: var(--raja); color: var(--hieno); box-shadow: var(--varjo-1); }
+  .u-hero--vaalea .u-kaari__laskuri [data-rkn-jaljella] { color: var(--paa); }
+  .u-hero--vaalea .u-kaari__alas { color: var(--hieno); }
+  /* Taustavalaistut paneelit: vaalea hehku, kultainen ristikko */
+  .u-hero--vaalea .u-kaari__paneeli::before {
+    background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--kulta-vaalea) 70%, #fff) 70%, transparent);
+    box-shadow: 0 0 30px -6px color-mix(in srgb, var(--kulta) 70%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--kulta) 70%, transparent);
+  }
+  .u-hero--vaalea .u-kaari__paneeli::after { background: linear-gradient(180deg, var(--kaari-kulta), var(--kulta) 60%, transparent 95%); opacity: 1; }
+}
+@media (max-width: 1023px) { .u-kaari__viiva { -webkit-mask: linear-gradient(#000 76%, transparent 98%); mask: linear-gradient(#000 76%, transparent 98%); } }
+@media (min-width: 1024px) { .u-hero--vaalea .u-kuvio { opacity: .1; } }

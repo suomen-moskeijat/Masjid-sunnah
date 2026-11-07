@@ -54,6 +54,11 @@
     varjo();
   }
 
+  /* Etusivun yläosan vertailu: ?hero=tumma tai ?hero=vaalea */
+  var heroValinta = (location.search.match(/[?&]hero=(tumma|vaalea)/) || [])[1];
+  var heroEl = document.querySelector('[data-hero]');
+  if (heroValinta && heroEl) heroEl.classList.toggle('u-hero--vaalea', heroValinta === 'vaalea');
+
   /* Pikanapit piiloon, kun etusivun yläosa, rukousaikataulu tai lomake on näkyvissä (eivät peitä tietoja) */
   var pikanapit = document.querySelector('[data-pikanapit]');
   var suojatut = kaikki('.u-hero, [data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');

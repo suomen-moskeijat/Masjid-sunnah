@@ -6,7 +6,7 @@ rukousajat: true
 {%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
 {% include u/rukousdata.html moskeija=m %}
 
-<section class="u-hero">
+<section class="u-hero{% if m.teema.hero == "vaalea" %} u-hero--vaalea{% endif %}" data-hero>
   <div class="u-hero__tausta" aria-hidden="true">
     <div class="u-kuvio"></div>
     <svg class="u-hero__kaari" viewBox="0 0 200 300" preserveAspectRatio="xMidYMax meet"><path d="M14 300V138C14 74 62 34 100 12c38 22 86 62 86 126v162" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M34 300V144c0-52 38-88 66-106 28 18 66 54 66 106v156" fill="none" stroke="currentColor" stroke-width=".8"/></svg>
