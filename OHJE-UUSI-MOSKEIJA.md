@@ -9,7 +9,7 @@ Pages CMS:ssä (Moskeijat → moskeija → Rukousajat).
 
 ```yaml
 rukousajat:
-  lahde: masjidbox        # masjidbox | mawaqit | taulukko | laskenta
+  lahde: masjidbox        # masjidbox | mawaqit | rukousajat | taulukko | laskenta
   tunnus: masjid-sunnah-helsinki
   iqamah_oletus: { fajr: 10, dhuhr: 10, asr: 10, maghrib: 5, isha: 10 }
 ```
@@ -18,10 +18,17 @@ rukousajat:
 |---|---|---|---|
 | **Masjidbox** | `masjidbox` | osoitteen `masjidbox.com/prayer-times/TUNNUS` loppuosa | Adhan, iqamah ja Jumuah haetaan **automaattisesti kerran tunnissa** (seuraavat 7 päivää). |
 | **Mawaqit** | `mawaqit` | osoitteen `mawaqit.net/fi/TUNNUS` loppuosa | Adhan, iqamah ja Jumuah haetaan **automaattisesti kerran tunnissa** (kuluva + 2 seuraavaa kuukautta). Myös moskeijan **kuvat** Mawaqitista lisätään galleriaan. |
+| **Ei omaa, pääkaupunkiseutu** | `rukousajat` (oletus, jos kaupunki on Helsinki, Espoo tai Vantaa) | – | Ajat haetaan **rukousajat.fi:n Helsingin aikataulusta** kerran tunnissa (kuluva + 2 kuukautta). Iqamah = rukousaika + `iqamah_oletus` minuuttia. |
 | **Oma aikataulu** (Excel, PDF tms.) | `taulukko` | – | Kuukauden ajat lisätään CSV-tiedostona: `_data/aikataulut/<moskeija>/VVVV-KK.csv` (malli alla). |
-| **Ei mitään** | `laskenta` (tai jätä tyhjäksi) | – | Ajat lasketaan **samalla tavalla kuin [rukousajat.fi](https://www.rukousajat.fi/)** moskeijan koordinaateista (`sijainti: lat, lon`). Iqamah = rukousaika + `iqamah_oletus` minuuttia. |
+| **Ei omaa, muu kaupunki** | `laskenta` (tai jätä tyhjäksi) | – | Ajat lasketaan **samalla tavalla kuin [rukousajat.fi](https://www.rukousajat.fi/) muissa kaupungeissa** moskeijan koordinaateista (`sijainti: lat, lon`). Iqamah = rukousaika + `iqamah_oletus` minuuttia. |
 
-Ilman lähdettä tarvitaan siis vain moskeijan sijainti. Oletusasetukset ovat samat kuin
+**Miten rukousajat.fi toimii:** Helsingissä, Espoossa ja Vantaalla se näyttää valmiin
+vuosiaikataulun (sama kuin esim. Masjid Sunnahin Masjidbox-näytöllä); muualla se laskee ajat.
+Sivusto tekee samoin. Taulukko luetaan rukousajat.fi:n sovelluksesta joka ajossa, joten jos
+se päivittyy, sivu seuraa. Jos haku joskus epäonnistuu, käytetään viimeisimpiä haettuja aikoja
+ja niiden jälkeen laskentaa.
+
+Ilman lähdettä tarvitaan siis vain moskeijan sijainti. Laskennan oletusasetukset ovat samat kuin
 rukousajat.fi:ssä: `laskentatapa: MuslimWorldLeague`, `madhab: Shafi` ja
 `korkeat_leveysasteet: TwilightAngle` (kesän valoisat yöt). Niitä voi muuttaa, jos moskeija
 haluaa toisin. Sama laskenta täyttää myös päivät, joille virallista aikaa ei vielä ole.

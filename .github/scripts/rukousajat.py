@@ -12,8 +12,11 @@ Moskeijan tiedostossa _moskeijat/<slug>.md, kohdassa rukousajat:
 - mawaqit:   tunnus osoitteesta mawaqit.net/fi/<tunnus>.
   Haetaan kuluva ja kaksi seuraavaa kuukautta (adhan, iqamah, Jumuah) sekä
   moskeijan kuvat (sisä- ja ulkokuva) sivun kuvagalleriaan.
+- rukousajat: rukousajat.fi:n Helsingin aikataulu (kuluva + 2 kuukautta).
+  Oletus, jos lähdettä ei ole ja kaupunki on Helsinki, Espoo tai Vantaa.
 - taulukko:  aikataulu lisätään itse CSV-tiedostoina, ei haeta mitään.
-- laskenta (tai ei mitään): sivu laskee ajat koordinaateista (sijainti).
+- laskenta (tai ei mitään muualla): sivu laskee ajat koordinaateista samoin
+  kuin rukousajat.fi muissa kaupungeissa.
 
 Ajat tallennetaan tiedostoihin _data/aikataulut/<slug>/VVVV-KK.csv; muut päivät
 jäävät ennalleen. Mawaqitin kuvat tallennetaan kansioon tiedostot/<slug>/mawaqit/
@@ -36,6 +39,9 @@ SARAKKEET = ["pv", "fajr", "auringonnousu", "dhuhr", "asr", "maghrib", "isha",
              "iqamah_fajr", "iqamah_dhuhr", "iqamah_asr", "iqamah_maghrib", "iqamah_isha"]
 VARSINAISET = ["fajr", "dhuhr", "asr", "maghrib", "isha"]
 SELAIN = {"User-Agent": "Mozilla/5.0 (compatible; MoskeijaSivusto/1.0)"}
+# rukousajat.fi käyttää valmista aikataulua näille kaupungeille, muualla se laskee ajat
+# (sama laskenta on sivuston varalaskenta: MuslimWorldLeague, Shafi, TwilightAngle).
+PAAKAUPUNKISEUTU = ("helsinki", "espoo", "vantaa")
 
 
 # ---------------------------------------------------------------- moskeijat
@@ -47,12 +53,16 @@ def moskeijat():
     for polku in sorted(glob.glob(os.path.join(JUURI, "_moskeijat", "*.md"))):
         slug = os.path.splitext(os.path.basename(polku))[0]
         lahde = tunnus = None
+        kaupunki = ""
         lohkossa = False
         with open(polku, encoding="utf-8") as f:
             for rivi in f:
                 m = re.match(r'slug:\s*["\']?([a-z0-9-]+)', rivi)
                 if m:
                     slug = m.group(1)
+                m = re.match(r'kaupunki:\s*["\']?([^"\'#\n]+)', rivi)
+                if m:
+                    kaupunki = m.group(1).strip()
                 m = re.match(r'masjidbox:\s*["\']?([A-Za-z0-9-]+)', rivi)  # vanha muoto
                 if m and not lahde:
                     lahde, tunnus = "masjidbox", m.group(1)
@@ -71,6 +81,9 @@ def moskeijat():
                         tunnus = m.group(1)
         if lahde in ("masjidbox", "mawaqit") and tunnus:
             tulos.append((slug, lahde, tunnus))
+        elif lahde == "rukousajat" or (not lahde and kaupunki.lower() in PAAKAUPUNKISEUTU):
+            # Ei omaa lähdettä: pääkaupunkiseudulla rukousajat.fi:n Helsingin aikataulu
+            tulos.append((slug, "rukousajat", kaupunki or "Helsinki"))
     return tulos
 
 
@@ -163,6 +176,41 @@ def mawaqit(tunnus, kuukausia=3):
     return paivat, kuvat
 
 
+# ---------------------------------------------------------------- rukousajat.fi
+def rukousajat_fi(_kaupunki, kuukausia=3):
+    """{'VVVV-KK-PP': rivi} rukousajat.fi:n Helsingin vuosiaikataulusta.
+
+    Sivusto ei tarjoa rajapintaa: aikataulu (365 päivää, avain PPKK) on sen
+    sovelluksen JavaScript-tiedostossa, josta se luetaan joka ajossa."""
+    etusivu = hae("https://www.rukousajat.fi/").decode("utf-8", "replace")
+    m = re.search(r'src="(/static/js/main\.[0-9a-f]+\.js)"', etusivu)
+    if not m:
+        raise ValueError("sovellustiedostoa ei löytynyt")
+    js = hae("https://www.rukousajat.fi" + m.group(1)).decode("utf-8", "replace")
+    kuvio = re.compile(r'"?(\d{4})"?:\{date:"(\d{4})",fajr:"([\d:]+)",sunrise:"([\d:]+)",zuhur:"([\d:]+)",'
+                       r'asr:"([\d:]+)",maghrib:"([\d:]+)",isha:"([\d:]+)"\}')
+    taulu = {}
+    for t in kuvio.finditer(js):
+        taulu.setdefault(t.group(2), t.groups()[2:])
+    if len(taulu) < 360:
+        raise ValueError(f"aikataulu vajaa ({len(taulu)} päivää)")
+    tanaan = datetime.date.today()
+    paivat = {}
+    for k in range(kuukausia):
+        v, kk = tanaan.year + (tanaan.month - 1 + k) // 12, (tanaan.month - 1 + k) % 12 + 1
+        for pv in range(1, 32):
+            try:
+                paiva = datetime.date(v, kk, pv)
+            except ValueError:
+                break
+            ajat = taulu.get(f"{pv:02d}{kk:02d}")
+            if ajat:
+                rivi = dict(zip(["fajr", "auringonnousu", "dhuhr", "asr", "maghrib", "isha"], ajat))
+                rivi.update({"iqamah_" + n: "" for n in VARSINAISET})  # iqamah: moskeijan oletusminuutit
+                paivat[paiva.isoformat()] = rivi
+    return paivat, []
+
+
 # ---------------------------------------------------------------- tallennus
 def tallenna_ajat(slug, paivat):
     kansio = os.path.join(JUURI, "_data", "aikataulut", slug)
@@ -228,7 +276,7 @@ def main():
         print("Yhdelläkään moskeijalla ei ole rukousaikojen lähdettä (masjidbox/mawaqit).")
     for slug, lahde, tunnus in lista:
         try:
-            paivat, kuvat = (masjidbox if lahde == "masjidbox" else mawaqit)(tunnus)
+            paivat, kuvat = {"masjidbox": masjidbox, "mawaqit": mawaqit, "rukousajat": rukousajat_fi}[lahde](tunnus)
             muutettu, yhteensa = tallenna_ajat(slug, paivat)
             k = tallenna_kuvat(slug, kuvat)
             print(f"{slug}: {yhteensa} päivää lähteestä {lahde} ({tunnus}), {muutettu} muuttui"

@@ -200,9 +200,9 @@ content:
           - name: lahde
             label: Mistä rukousajat tulevat
             type: select
-            description: "masjidbox / mawaqit = ajat ja iqamah haetaan automaattisesti kerran tunnissa; taulukko = omat CSV-tiedostot; laskenta = sama laskenta kuin rukousajat.fi (moskeijan koordinaateista). Oletus, jos lähdettä ei valita."
+            description: "masjidbox / mawaqit = ajat ja iqamah haetaan automaattisesti kerran tunnissa; rukousajat = rukousajat.fi:n Helsingin aikataulu (oletus Helsingissä, Espoossa ja Vantaalla); taulukko = omat CSV-tiedostot; laskenta = sama laskenta kuin rukousajat.fi muissa kaupungeissa (oletus muualla)."
             options:
-              values: [masjidbox, mawaqit, taulukko, laskenta]
+              values: [masjidbox, mawaqit, rukousajat, taulukko, laskenta]
           - { name: tunnus, label: Moskeijan tunnus palvelussa, type: string, description: "Masjidbox: osoitteen masjidbox.com/prayer-times/TUNNUS loppuosa. Mawaqit: osoitteen mawaqit.net/fi/TUNNUS loppuosa." }
           - { name: aikataulu, label: Aikataulukansio (valinnainen), type: string, description: "Oletus on moskeijan tiedostonimi. Kansio _data/aikataulut/-kansiossa, kuukauden CSV esim. 2026-12.csv" }
           - { name: virallinen_url, label: Linkki viralliseen aikatauluun (esim. Masjidbox), type: string }
