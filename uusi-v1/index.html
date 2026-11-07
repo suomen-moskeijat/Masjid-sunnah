@@ -16,13 +16,17 @@ rukousajat: true
       {% if m.hero_tunniste %}<p class="u-eyebrow u-eyebrow--vaalea">{% include kt.html arvo=m.hero_tunniste %}</p>{% endif %}
       <h1>{% if m.hero_otsikko %}{% include kt.html arvo=m.hero_otsikko %}{% else %}{% include nimi.html moskeija=m %}{% endif %}</h1>
       {% if m.esittely %}<p class="u-hero__esittely">{% include kt.html arvo=m.esittely %}</p>{% endif %}
-      <div class="u-hero__napit">
-        <a class="u-nappi u-nappi--kulta" href="{{ '/uusi-v1/palvelut/' | relative_url }}">{% include k.html a="tutustu_toimintaan" %}</a>
-        {% if m.lasten_opetus.kaytossa %}<a class="u-nappi u-nappi--haamu" href="{{ '/uusi-v1/palvelut/lasten-opetus/' | relative_url }}">{% include ikoni.html nimi="hattu" koko=18 %} {% include k.html a="ilmoita_lapsesi" %}</a>{% endif %}
-      </div>
     </div>
     <div class="u-hero__rukous">
-      {% include u1/rukous.html linkki=true %}
+      {% include u1/rukous.html vain_seuraava=true %}
+    </div>
+    <div class="u-hero__napit">
+      {% if m.lasten_opetus.kaytossa %}
+      <a class="u-nappi u-nappi--kulta" href="{{ '/uusi-v1/palvelut/lasten-opetus/' | relative_url }}">{% include ikoni.html nimi="hattu" koko=18 %} {% include k.html a="ilmoita_lapsesi" %}</a>
+      <a class="u-nappi u-nappi--haamu" href="{{ '/uusi-v1/palvelut/' | relative_url }}">{% include k.html a="tutustu_toimintaan" %}</a>
+      {% else %}
+      <a class="u-nappi u-nappi--kulta" href="{{ '/uusi-v1/palvelut/' | relative_url }}">{% include k.html a="tutustu_toimintaan" %}</a>
+      {% endif %}
     </div>
   </div>
 </section>

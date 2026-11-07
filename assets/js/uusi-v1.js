@@ -197,6 +197,7 @@
         try { hijri.textContent = muotoile(nyt, { day: 'numeric', month: 'long', year: 'numeric' }, loc + '-u-ca-islamic-umalqura' + (kieli() === 'ar' ? '-nu-latn' : '')); } catch (e) { hijri.textContent = ''; }
       }
       var tbody = rk.querySelector('[data-rk-rivit]');
+      if (!tbody) return; // etusivulla vain seuraava rukous, ei taulukkoa
       tbody.textContent = '';
       RUKOUKSET.forEach(function (n) {
         var tr = document.createElement('tr');

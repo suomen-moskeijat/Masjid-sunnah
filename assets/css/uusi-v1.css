@@ -472,3 +472,23 @@ body.on-valikko .u-pikanapit { display: none; }
 .u-pikanappi:hover { transform: scale(1.06); }
 .u-pikanappi--wa { width: 58px; height: 58px; background: #25d366; color: #fff; }
 .u-pikanappi--puh { width: 46px; height: 46px; background: var(--pinta); color: var(--paa); border: 1px solid var(--raja); }
+
+/* ---------- Etusivu: vain seuraava rukous + toimintonapit, yläosa yhtenäinen lohko ---------- */
+.u-hero { padding: 28px 0 32px; }
+.u-hero__sisalto { grid-template-areas: "teksti" "rukous" "napit"; row-gap: 22px; }
+.u-hero__teksti { grid-area: teksti; }
+.u-hero__rukous { grid-area: rukous; margin-bottom: 0; }
+.u-hero__napit { grid-area: napit; display: grid; gap: 10px; margin-top: 0; }
+.u-hero__napit .u-nappi { width: 100%; white-space: normal; text-align: center; }
+.u-osio--hero-jalkeen { padding-top: 56px !important; }
+.rk--vain-seuraava .rk__palkki { margin-top: 16px; }
+.rk--vain-seuraava .rk__ala { justify-content: center; border-top: 0; }
+.rk__katso { font-size: 15px; }
+@media (min-width: 1024px) {
+  .u-hero { padding: 72px 0 80px; }
+  .u-hero__sisalto { grid-template-areas: "teksti rukous" "napit rukous"; grid-template-columns: 1.05fr .95fr; row-gap: 30px; column-gap: 64px; align-items: center; }
+  .u-hero__teksti { align-self: end; }
+  .u-hero__napit { align-self: start; display: flex; flex-wrap: wrap; gap: 12px; }
+  .u-hero__napit .u-nappi { width: auto; }
+  .u-osio--hero-jalkeen { padding-top: 88px !important; }
+}
