@@ -1,0 +1,15 @@
+---
+layout: oma-sivu
+title: Rukousajat
+permalink: /rukousajat/
+---
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{%- if m -%}
+<header class="sivuotsikko">
+  <h1>{% include k.html a="rukousajat" %}</h1>
+  {% if m.juma and m.juma != "" %}<p class="hienoinen">{% include k.html a="jumua" %}: <strong dir="ltr">{{ m.juma }}</strong></p>{% endif %}
+</header>
+{% include rukousajat.html moskeija=m taysi=true %}
+<script src="{{ '/assets/vendor/adhan.umd.min.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/rukousajat.js' | relative_url }}" defer></script>
+{%- endif -%}

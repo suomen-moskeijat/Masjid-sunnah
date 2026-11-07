@@ -1,0 +1,7 @@
+{%- comment -%} Lomakkeen tilaviestit, joita lomake.js näyttää ja piilottaa. {%- endcomment -%}
+<p class="lomake__virhe" data-viesti="virhe" hidden>{% include k.html a="lomake_pakollinen" %}</p>
+<p class="lomake__virhe" data-viesti="lahetysvirhe" hidden>{% include k.html a="lomake_virhe" %}</p>
+<p class="lomake__ok" data-viesti="kiitos" hidden>{% include k.html a="lomake_kiitos" %}</p>
+<p class="lomake__ok" data-viesti="whatsapp" hidden>{% include k.html a="lomake_whatsapp" %}</p>
+<p class="lomake__ok" data-viesti="sahkoposti" hidden>{% include k.html a="lomake_sahkoposti_auki" %}</p>
+<p class="hienoinen" data-viesti="lahetetaan" hidden>{% include k.html a="lomake_lahetetaan" %}</p>

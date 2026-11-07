@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{%- assign mosk_avain = page.moskeija | default: site.moskeija -%}
+{%- assign mosk = site.moskeijat | where: 'slug', mosk_avain | first -%}
+<p class="murupolku"><a href="{{ '/artikkelit/' | relative_url }}">{% include k.html a="nav_artikkelit" %}</a>{% if mosk and site.moskeija == "" %} › <a href="{{ mosk.url | relative_url }}">{% include nimi.html moskeija=mosk %}</a>{% endif %}</p>
+
+<article class="kortti artikkeli">
+  {% if page.kansikuva and page.kansikuva != "" %}<img class="artikkeli__kansi" src="{{ page.kansikuva | relative_url }}" alt="">{% endif %}
+  <h1>{{ page.title }}</h1>
+  <p class="hienoinen">{{ page.date | date: '%-d.%-m.%Y' }}{% if page.kirjoittaja and page.kirjoittaja != "" %} · {{ page.kirjoittaja }}{% endif %}{% if mosk %} · {% include nimi.html moskeija=mosk %}{% endif %}</p>
+  <div class="sisalto">{{ content }}</div>
+
+  {% if page.liitteet.size > 0 %}
+  <section class="liitteet">
+    <h2>{% include k.html a="ladattavat" %}</h2>
+    <ul>
+      {% for l in page.liitteet %}
+      {%- assign tiedosto = l.tiedosto | default: l -%}
+      {%- assign nimi = l.nimi | default: tiedosto | split: '/' | last -%}
+      {%- assign paate = tiedosto | split: '.' | last | upcase -%}
+      <li><a class="liite" href="{{ tiedosto | relative_url }}" download>
+        <span class="liite__tyyppi">{{ paate }}</span> {{ nimi }}
+      </a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>

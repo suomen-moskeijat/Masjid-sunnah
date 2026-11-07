@@ -1,0 +1,22 @@
+---
+layout: default
+title: Tapahtumat
+permalink: /tapahtumat/
+---
+<header class="sivuotsikko">
+  <h1>{% include k.html a="nav_tapahtumat" %}</h1>
+  <p class="hienoinen">{% include k.html a="tapahtumat_teksti" %}</p>
+  {%- assign kaupungit = site.moskeijat | map: 'kaupunki' | uniq | sort -%}
+  {% if kaupungit.size > 1 and site.moskeija == "" %}
+  <label class="suodatin">{% include k.html a="kaupunki" %}:
+    <select data-kaupunkisuodatin>
+      <option value="">–</option>
+      {% for k in kaupungit %}<option>{{ k }}</option>{% endfor %}
+    </select>
+  </label>
+  {% endif %}
+</header>
+
+<section class="kortti">
+  {% include tapahtumalista.html %}
+</section>

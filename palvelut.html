@@ -1,0 +1,32 @@
+---
+layout: oma-sivu
+title: Opetus ja palvelut
+permalink: /palvelut/
+---
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{%- if m -%}
+<header class="sivuotsikko">
+  <h1>{% include k.html a="palvelut_otsikko" %}</h1>
+  {% if m.palvelut_esittely %}<p class="sivuotsikko__johdanto">{% include kt.html arvo=m.palvelut_esittely %}</p>{% endif %}
+</header>
+<div class="palveluruudukko">
+  {% for p in m.palvelut %}
+  <article class="kortti palvelukortti">
+    <span class="palvelukortti__kuvake">{% include ikoni.html nimi=p.kuvake %}</span>
+    <h2>{% include kt.html arvo=p.nimi %}</h2>
+    <p>{% include kt.html arvo=p.kuvaus %}</p>
+  </article>
+  {% endfor %}
+</div>
+
+{% if m.lasten_opetus.kaytossa %}
+<section class="nosto">
+  <div>
+    <p class="nosto__tunniste">{% include k.html a="lasten_opetus" %}</p>
+    <h2>{% include k.html a="ilmoita_lapsesi" %}</h2>
+    {% if m.lasten_opetus.teksti %}<p>{% include kt.html arvo=m.lasten_opetus.teksti %}</p>{% endif %}
+  </div>
+  <a class="nappi nappi--iso" href="{{ '/palvelut/lasten-opetus/' | relative_url }}">{% include k.html a="ilmoita_lapsesi" %}</a>
+</section>
+{% endif %}
+{%- endif -%}

@@ -1,0 +1,45 @@
+# Masjid Sunnah Helsinki – sivuston asetukset
+title: Masjid Sunnah Helsinki
+description: Masjid Sunnah Helsinki, Ylä-Malmin tori 6B. Rukoukset, perjantaisaarnat suomeksi, madrasah, Akatemia ja viikkoluennot.
+lang: fi
+
+# Moskeijan tiedot ovat tiedostossa _moskeijat/masjid-sunnah-helsinki.md
+moskeija: masjid-sunnah-helsinki
+kielet: [fi, en, ar, so]
+
+# Linkki Suomen moskeijat -hakemistoon alapalkissa (lisätään, kun hakemisto on julkaistu)
+hakemisto_url: ""
+
+# GitHub Pages -osoite: https://suomen-moskeijat.github.io/Masjid-sunnah/
+# Omalla verkkotunnuksella (esim. masjidsunnah.fi): url: "https://masjidsunnah.fi" ja baseurl: ""
+url: "https://suomen-moskeijat.github.io"
+baseurl: "/Masjid-sunnah"
+
+timezone: Europe/Helsinki
+future: true
+permalink: /artikkelit/:year/:month/:title/
+
+collections:
+  moskeijat:
+    output: true
+    permalink: /moskeijat/:name/
+  tapahtumat:
+    output: true
+    permalink: /tapahtumat/:name/
+
+defaults:
+  - scope: { path: "", type: moskeijat }
+    values: { layout: moskeija, kartta: true }
+  - scope: { path: "", type: tapahtumat }
+    values: { layout: tapahtuma }
+  - scope: { path: "", type: posts }
+    values: { layout: artikkeli }
+
+markdown: kramdown
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

@@ -1,0 +1,17 @@
+---
+layout: oma-sivu
+title: Ilmoita lapsesi opetukseen
+permalink: /palvelut/lasten-opetus/
+---
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{%- if m -%}
+<p class="murupolku"><a href="{{ '/palvelut/' | relative_url }}">{% include k.html a="nav_palvelut" %}</a></p>
+<header class="sivuotsikko">
+  <h1>{% include k.html a="ilmoita_lapsesi" %}</h1>
+  {% if m.lasten_opetus.teksti %}<p class="sivuotsikko__johdanto">{% include kt.html arvo=m.lasten_opetus.teksti %}</p>{% endif %}
+</header>
+<div class="ruudukko ruudukko--lomakkeet">
+  {% include lomake-ilmoittautuminen.html moskeija=m %}
+  {% include lomake-kysy.html moskeija=m %}
+</div>
+{%- endif -%}
