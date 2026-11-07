@@ -56,7 +56,7 @@
 
   /* Pikanapit piiloon, kun rukousaikataulu tai lomake on näkyvissä (eivät peitä tietoja) */
   var pikanapit = document.querySelector('[data-pikanapit]');
-  var suojatut = kaikki('[data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
+  var suojatut = kaikki('.u-alku, [data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
   if (pikanapit && suojatut.length && 'IntersectionObserver' in window) {
     var nakyvat = new Set();
     var io = new IntersectionObserver(function (havainnot) {
@@ -230,6 +230,12 @@
       rk.querySelector('[data-rk-klo]').textContent = N().klo + ' ' + aika(s.aika);
       rk.querySelector('[data-rk-jaljella]').textContent = kesto(s.aika - nyt);
       rk.querySelector('[data-rk-palkki]').style.width = (osuus * 100).toFixed(1) + '%';
+    });
+    // Etusivun aloitusnäytön laskuri
+    kaikki('[data-laskuri]').forEach(function (l) {
+      l.querySelector('[data-laskuri-nimi]').textContent = nimi;
+      l.querySelector('[data-laskuri-klo]').textContent = N().klo + ' ' + aika(s.aika);
+      l.querySelector('[data-laskuri-jaljella]').textContent = kesto(s.aika - nyt);
     });
   }
 
