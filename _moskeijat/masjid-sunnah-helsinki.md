@@ -23,6 +23,17 @@ hero_tunniste:
   en: "Malmi, Helsinki"
   ar: "مالمي، هلسنكي"
   so: "Malmi, Helsinki"
+# Etusivun yläosa (uusi-v2): mikä paikka on ja missä, sekä yksi konkreettinen tieto
+etusivun_otsikko:
+  fi: "Moskeija Helsingin Malmilla"
+  en: "A mosque in Malmi, Helsinki"
+  ar: "مسجد في مالمي، هلسنكي"
+  so: "Masaajid ku yaal Malmi, Helsinki"
+etusivun_teksti:
+  fi: "Rukoukset joka päivä, perjantain khutba ja Koraanikoulu 5–16-vuotiaille. Suomeksi, arabiaksi ja somaliksi."
+  en: "Daily prayers, the Friday khutbah and Quran school for ages 5–16. In Finnish, Arabic and Somali."
+  ar: "الصلوات اليومية وخطبة الجمعة ومدرسة القرآن للأعمار ٥–١٦، بالفنلندية والعربية والصومالية."
+  so: "Salaadaha maalin kasta, khudbadda Jimcaha iyo dugsi Quraan da'da 5–16. Af-Finnish, Carabi iyo Soomaali."
 hero_otsikko:
   fi: "Tervetuloa Masjid Sunnah Helsinkiin"
   en: "Welcome to Masjid Sunnah Helsinki"
@@ -271,7 +282,8 @@ rukousajat:
 
 teema:
   logo: /tiedostot/masjid-sunnah/logo.png
-  logo_pieni: /tiedostot/masjid-sunnah/logo-640.png   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
+  logo_pieni: /tiedostot/masjid-sunnah/logo-640.png
+  merkki: /tiedostot/masjid-sunnah/merkki.png   # logo ilman laatikkoa, läpinäkyvä (uusi-v2:n yläosa)   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
   hero: vaalea
   paa: "#3f2717"
   paa_tumma: "#2b1a0e"

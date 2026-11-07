@@ -1,0 +1,62 @@
+---
+layout: uusi-v2
+permalink: /uusi-v2/
+rukousajat: true
+---
+{%- comment -%}
+  Versio 2: Taste Skillin "paikka ilman kuvia" -linja.
+  Näyttö 1: moskeijan väri tasaisena, logo isona, mikä ja missä, yksi tieto, yksi pääteko.
+  Näyttö 2: päivän rukousajat (moskeijan "aukioloajat") ja osoite.
+  Toimii ilman valokuvia; oikeat kuvat tulevat Instagramista automaattisesti.
+{%- endcomment -%}
+{%- assign m = site.moskeijat | where: 'slug', site.moskeija | first -%}
+{% include u2/rukousdata.html moskeija=m %}
+
+<section class="v2-hero">
+  <div class="u-kehys v2-hero__sisalto">
+    {% if m.teema.merkki %}<span class="v2-hero__merkki" role="img" aria-label="{{ m.title }}" style="--logo: url('{{ m.teema.merkki | relative_url }}')"></span>{% endif %}
+    <div class="v2-hero__teksti-osa">
+    <p class="v2-hero__ilmoitus" data-ilmoitus hidden>{% include k.html a="seuraava_rukous" %}: <strong data-ilmoitus-nimi></strong> <span data-ilmoitus-aika dir="ltr"></span></p>
+    <h1 class="v2-hero__otsikko">{% if m.etusivun_otsikko %}{% include kt.html arvo=m.etusivun_otsikko %}{% else %}{% include nimi.html moskeija=m %}{% endif %}</h1>
+    {% if m.etusivun_teksti %}<p class="v2-hero__teksti">{% include kt.html arvo=m.etusivun_teksti %}</p>{% endif %}
+    <div class="v2-hero__teot">
+      {% if m.lasten_opetus.kaytossa %}
+      <a class="v2-nappi" href="{{ '/uusi-v2/palvelut/lasten-opetus/' | relative_url }}">{% include k.html a="ilmoita_lapsesi" %}</a>
+      {% endif %}
+      <a class="v2-linkki" href="{{ '/uusi-v2/palvelut/' | relative_url }}">{% include k.html a="tutustu_toimintaan" %}</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="v2-osio v2-kaynti" id="rukousajat">
+  <div class="u-kehys v2-kaynti__sisalto">
+    <div class="v2-kaynti__ajat">
+      <h2>{% include k.html a="paivan_ajat" %}</h2>
+      {% include u2/rukous.html %}
+      <a class="v2-linkki" href="{{ '/uusi-v2/rukousajat/' | relative_url }}">{% include k.html a="koko_aikataulu" %}</a>
+    </div>
+    <div class="v2-kaynti__paikka">
+      <h2>{% include k.html a="tervetuloa_kaymaan" %}</h2>
+      {%- assign katu = m.osoite | split: ',' | first -%}
+      <p class="v2-osoite"><a href="https://www.google.com/maps/search/?api=1&amp;query={{ m.osoite | url_encode }}" target="_blank" rel="noopener">{{ katu }}</a></p>
+      <p class="v2-hieno">{{ m.osoite | remove_first: katu | remove_first: ', ' }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="v2-osio">
+  <div class="u-kehys">
+    <h2>{% include k.html a="toimintamme" %}</h2>
+    <ul class="v2-lista">
+      {% for c in m.kortit %}
+      {%- assign polku = c.linkki | default: '/palvelut/' | remove_first: '/' -%}
+      <li><a href="{{ '/uusi-v2/' | append: polku | relative_url }}"><strong>{% include kt.html arvo=c.nimi %}</strong><span>{% include kt.html arvo=c.kuvaus %}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% include u2/instagram.html moskeija=m %}
+
+<div class="u-kehys">{% include u2/lahjoitus.html moskeija=m %}</div>
