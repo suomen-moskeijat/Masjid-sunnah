@@ -566,3 +566,56 @@ html[lang="ar"] .rk__eyebrow { font-size: 14px; }
 .u-pikatoiminnot a { gap: 6px; padding: 12px 6px 11px; }
 .u-pikatoiminnot .u-ikoni { width: auto; height: auto; background: none; border-radius: 0; color: var(--kulta-teksti); }
 .u-sivuhero .u-kuvio { opacity: .06; }
+
+/* ---------- 15. Puhelimen etusivu: kaari ja seuraava rukous ---------- */
+.u-kaari, .u-kaari__alas { display: none; }
+@media (max-width: 1023px) {
+  .u-hero__teksti { text-align: center; padding: 26px 0 22px; }
+  .u-hero h1 { font-size: clamp(24px, 6.6vw, 34px); margin: 0 auto 18px; max-width: 16em; }
+  .u-hero__esittely { display: none; }
+  .u-hero__tausta::after { width: 130vw; height: 130vw; inset-inline-end: auto; left: -15vw; top: 18%; background: radial-gradient(closest-side, color-mix(in srgb, var(--kulta) 26%, transparent), transparent); }
+  .u-hero__kaari { display: none; }
+
+  .u-kaari { position: relative; display: flex; flex-direction: column; align-items: center; width: min(100%, 300px); min-height: 330px; margin-inline: auto; padding: 66px 18px 26px; color: var(--kulta); }
+  .u-kaari__viiva { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .u-kaari__viiva path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .u-kaari__sisa { opacity: .45; }
+  .u-kaari > p { position: relative; margin: 0; }
+  .u-kaari__otsikko { font: 600 12.5px/1.2 var(--ft); letter-spacing: .14em; text-transform: uppercase; color: var(--kulta); }
+  html[lang="ar"] .u-kaari__otsikko { letter-spacing: 0; font-size: 14px; }
+  .u-kaari__nimi { margin-top: 10px !important; font: 700 30px/1.1 var(--fo); color: #fff; }
+  .u-kaari__aika {
+    margin-top: 2px !important; font: 700 76px/1 var(--fo); letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #fff3dc 10%, var(--kulta) 90%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 6px 22px color-mix(in srgb, var(--kulta) 35%, transparent));
+  }
+  .u-kaari__iqamah { margin-top: 6px !important; font: 500 15px/1.3 var(--ft); color: rgb(255 255 255 / .72); }
+  .u-kaari__iqamah span[dir] { font-weight: 700; color: #fff; }
+  .u-kaari__laskuri {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 16px !important; padding: 8px 16px; border-radius: 999px;
+    background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .14); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    font: 500 14px/1.2 var(--ft); color: rgb(255 255 255 / .8);
+  }
+  .u-kaari__laskuri [data-rkn-jaljella] { font: 700 15px/1 var(--fo); font-variant-numeric: tabular-nums; color: #fff; }
+  .u-kaari__alas { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; margin-top: 4px; font: 600 14px/1.2 var(--ft); color: rgb(255 255 255 / .75); text-decoration: none; }
+
+  /* Kortissa ei toistu seuraava rukous, koska se on jo kaaressa */
+  .rk--tiivis .rk__seuraava { display: none; }
+  .u-hero__rukous { scroll-margin-top: calc(var(--yla) + 12px); }
+
+  /* Avautumisanimaatio: kaari piirtyy, sisältö nousee esiin */
+  @media (prefers-reduced-motion: no-preference) {
+    .u-kaari__viiva path { stroke-dashoffset: 1; animation: u-piirra 1.6s cubic-bezier(.6, 0, .2, 1) .1s forwards; }
+    .u-kaari__sisa { animation-delay: .35s !important; }
+    .u-hero h1, .u-kaari > p, .u-kaari__alas { opacity: 0; animation: u-nouse .7s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .u-hero h1 { animation-delay: .05s; }
+    .u-kaari__otsikko { animation-delay: .45s !important; }
+    .u-kaari__nimi { animation-delay: .55s !important; }
+    .u-kaari__aika { animation-delay: .65s !important; }
+    .u-kaari__iqamah { animation-delay: .75s !important; }
+    .u-kaari__laskuri { animation-delay: .85s !important; }
+    .u-kaari__alas { animation-delay: 1s; }
+  }
+}
+@keyframes u-piirra { to { stroke-dashoffset: 0; } }
+@keyframes u-nouse { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }

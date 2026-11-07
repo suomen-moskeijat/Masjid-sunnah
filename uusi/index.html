@@ -15,13 +15,26 @@ rukousajat: true
     <div class="u-hero__teksti">
       {% if m.hero_tunniste %}<p class="u-eyebrow u-eyebrow--vaalea">{% include kt.html arvo=m.hero_tunniste %}</p>{% endif %}
       <h1>{% if m.hero_otsikko %}{% include kt.html arvo=m.hero_otsikko %}{% else %}{% include nimi.html moskeija=m %}{% endif %}</h1>
+      <div class="u-kaari" data-rkn>
+        <svg class="u-kaari__viiva" viewBox="0 0 300 360" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="u-kaari-hiipuu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+          <path class="u-kaari__ulko" pathLength="1" d="M8 360V150C8 84 76 34 150 6c74 28 142 78 142 144v210" fill="none" stroke="url(#u-kaari-hiipuu)" stroke-width="1.6"/>
+          <path class="u-kaari__sisa" pathLength="1" d="M22 360V156c0-56 58-100 128-126 70 26 128 70 128 126v204" fill="none" stroke="url(#u-kaari-hiipuu)" stroke-width=".8"/>
+        </svg>
+        <p class="u-kaari__otsikko">{% include k.html a="seuraava_rukous" %}</p>
+        <p class="u-kaari__nimi" data-rkn-nimi>&nbsp;</p>
+        <p class="u-kaari__aika" data-rkn-aika dir="ltr">--:--</p>
+        <p class="u-kaari__iqamah" data-rkn-iqamah hidden>{% include k.html a="iqamah" %} <span data-rkn-iqamah-aika dir="ltr"></span></p>
+        <p class="u-kaari__laskuri"><span data-rkn-jaljella dir="ltr">--:--:--</span> {% include k.html a="jaljella" %}</p>
+      </div>
+      <a class="u-kaari__alas" href="#paivan-ajat">{% include k.html a="paivan_ajat" %} <span aria-hidden="true">↓</span></a>
       {% if m.esittely %}<p class="u-hero__esittely">{% include kt.html arvo=m.esittely %}</p>{% endif %}
       <div class="u-hero__napit">
         <a class="u-nappi u-nappi--kulta" href="{{ '/uusi/palvelut/' | relative_url }}">{% include k.html a="tutustu_toimintaan" %}</a>
         {% if m.lasten_opetus.kaytossa %}<a class="u-nappi u-nappi--haamu" href="{{ '/uusi/palvelut/lasten-opetus/' | relative_url }}">{% include ikoni.html nimi="hattu" koko=18 %} {% include k.html a="ilmoita_lapsesi" %}</a>{% endif %}
       </div>
     </div>
-    <div class="u-hero__rukous">
+    <div class="u-hero__rukous" id="paivan-ajat">
       {% include u/rukous.html linkki=true tiivis=true %}
     </div>
   </div>

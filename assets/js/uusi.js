@@ -54,9 +54,9 @@
     varjo();
   }
 
-  /* Pikanapit piiloon, kun rukousaikataulu tai lomake on näkyvissä (eivät peitä tietoja) */
+  /* Pikanapit piiloon, kun etusivun yläosa, rukousaikataulu tai lomake on näkyvissä (eivät peitä tietoja) */
   var pikanapit = document.querySelector('[data-pikanapit]');
-  var suojatut = kaikki('[data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
+  var suojatut = kaikki('.u-hero, [data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
   if (pikanapit && suojatut.length && 'IntersectionObserver' in window) {
     var nakyvat = new Set();
     var io = new IntersectionObserver(function (havainnot) {
@@ -227,6 +227,16 @@
       rk.querySelector('[data-rk-nimi]').textContent = nimi;
       rk.querySelector('[data-rk-klo]').textContent = N().klo + ' ' + aika(s.aika);
       rk.querySelector('[data-rk-jaljella]').textContent = kesto(s.aika - nyt);
+    });
+    // Etusivun kaari (puhelin): seuraava rukous isolla
+    var iqa = !s.huomenna && nykytila.tanaan.iqamah ? nykytila.tanaan.iqamah[s.nimi] : null;
+    kaikki('[data-rkn]').forEach(function (el) {
+      el.querySelector('[data-rkn-nimi]').textContent = nimi;
+      el.querySelector('[data-rkn-aika]').textContent = aika(s.aika);
+      el.querySelector('[data-rkn-jaljella]').textContent = kesto(s.aika - nyt);
+      var iq = el.querySelector('[data-rkn-iqamah]');
+      iq.hidden = !iqa;
+      if (iqa) iq.querySelector('[data-rkn-iqamah-aika]').textContent = aika(iqa);
     });
   }
 
