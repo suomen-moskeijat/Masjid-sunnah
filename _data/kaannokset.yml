@@ -180,4 +180,4 @@ kieli_arabia:       { fi: "arabia", en: "Arabic", ar: "العربية", so: "Car
 kieli_somali:       { fi: "somali", en: "Somali", ar: "الصومالية", so: "Soomaali" }
 kieli_englanti:     { fi: "englanti", en: "English", ar: "الإنجليزية", so: "Ingiriisi" }
 kieli_turkki:       { fi: "turkki", en: "Turkish", ar: "التركية", so: "Turki" }
-
+ilmoita_lyhyt:      { fi: "Ilmoita lapsesi", en: "Register a child", ar: "سجّل طفلك", so: "Diiwaangeli ilmaha" }

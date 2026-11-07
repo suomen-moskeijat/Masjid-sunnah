@@ -22,12 +22,19 @@ rukousajat: true
       </div>
     </div>
     <div class="u-hero__rukous">
-      {% include u/rukous.html linkki=true %}
+      {% include u/rukous.html linkki=true tiivis=true %}
     </div>
   </div>
 </section>
 
-<section class="u-osio u-kehys u-osio--hero-jalkeen">
+{%- assign wa = m.whatsapp | default: "" | remove: " " | remove: "+" | remove: "-" -%}
+<nav class="u-kehys u-pikatoiminnot" aria-label="Pikatoiminnot">
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ m.osoite | url_encode }}" target="_blank" rel="noopener"><span class="u-ikoni">{% include ikoni.html nimi="sijainti" koko=22 %}</span>{% include k.html a="reittiohjeet" %}</a>
+  {% if m.lasten_opetus.kaytossa %}<a href="{{ '/uusi/palvelut/lasten-opetus/' | relative_url }}"><span class="u-ikoni">{% include ikoni.html nimi="hattu" koko=22 %}</span>{% include k.html a="ilmoita_lyhyt" %}</a>{% endif %}
+  <a href="{{ '/uusi/lahjoita/' | relative_url }}"><span class="u-ikoni">{% include ikoni.html nimi="sydan" koko=22 %}</span>{% include k.html a="nav_lahjoita" %}</a>
+</nav>
+
+<section class="u-osio u-kehys">
   <div class="u-osio__yla">
     <h2>{% include k.html a="toimintamme" %}</h2>
     <a class="u-linkki" href="{{ '/uusi/palvelut/' | relative_url }}">{% include k.html a="nav_palvelut" %} <span class="u-flip" aria-hidden="true">→</span></a>

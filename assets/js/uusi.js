@@ -198,7 +198,11 @@
       }
       var tbody = rk.querySelector('[data-rk-rivit]');
       tbody.textContent = '';
+      var tiivis = rk.classList.contains('rk--tiivis');
+      var nousu = rk.querySelector('[data-rk-nousu]');
+      if (nousu) nousu.textContent = '☀ ' + aika(t.sunrise);
       RUKOUKSET.forEach(function (n) {
+        if (tiivis && n === 'sunrise') return; // tiiviissä kortissa auringonnousu alalaidassa
         var tr = document.createElement('tr');
         if (n === 'sunrise') tr.className = 'rk__rivi--muu';
         if (!seur.huomenna && n === seur.nimi) { tr.className = 'rk__rivi--seuraava'; tr.setAttribute('aria-current', 'time'); }

@@ -167,24 +167,23 @@ html[dir="rtl"] .u-mv-linkki .u-nuoli { transform: scaleX(-1); }
 .u-mv-napit .u-nappi--kulta { grid-column: 1 / -1; }
 
 /* ---------- 5. Etusivun alkuosa ---------- */
-.u-hero { position: relative; isolation: isolate; color: #fff; padding: 28px 0 0; }
+.u-hero { position: relative; isolation: isolate; color: #fff; padding: 22px 0 0; }
 .u-hero__tausta { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--paa-tumma); }
 .u-hero__tausta::after { content: ""; position: absolute; width: 90vmax; height: 90vmax; inset-inline-end: -40vmax; top: -50vmax; background: radial-gradient(closest-side, color-mix(in srgb, var(--kulta) 30%, transparent), transparent); }
 .u-hero__kaari { position: absolute; width: 230px; height: 345px; inset-inline-end: -110px; top: -30px; color: var(--kulta); opacity: .14; }
 .u-hero__sisalto { display: grid; gap: 24px; }
 .u-hero__sisalto > * { min-width: 0; }
-.u-hero h1 { color: #fff; font-size: clamp(30px, 7.6vw, 56px); margin: 14px 0 12px; }
+.u-hero h1 { color: #fff; font-size: clamp(28px, 7.4vw, 56px); margin: 12px 0 8px; }
 .u-hero__esittely { color: rgb(255 255 255 / .8); font-size: clamp(16px, 2vw, 19px); max-width: 34em; }
 .u-hero__napit { display: none; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
 .u-hero__rukous { position: relative; margin-bottom: -64px; }
-.u-osio--hero-jalkeen { padding-top: 104px !important; }
+
 @media (min-width: 1024px) {
   .u-hero { padding: 64px 0 72px; }
   .u-hero__sisalto { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 64px; }
   .u-hero__napit { display: flex; }
   .u-hero__rukous { margin-bottom: 0; }
   .u-hero__kaari { width: 560px; height: 840px; inset-inline-end: 6%; top: -40px; opacity: .2; }
-  .u-osio--hero-jalkeen { padding-top: 72px !important; }
 }
 
 /* ---------- 6. Rukousajat (päivä) ---------- */
@@ -472,3 +471,59 @@ body.on-valikko .u-pikanapit { display: none; }
 .u-pikanappi:hover { transform: scale(1.06); }
 .u-pikanappi--wa { width: 58px; height: 58px; background: #25d366; color: #fff; }
 .u-pikanappi--puh { width: 46px; height: 46px; background: var(--pinta); color: var(--paa); border: 1px solid var(--raja); }
+
+/* ---------- 13. Etusivun tiivistykset ---------- */
+/* Tiivis rukouskortti: samat tiedot, matalammat rivit */
+.rk--tiivis .rk__seuraava { padding: 14px 18px 12px; }
+.rk--tiivis .rk__nimi { font-size: 24px; margin-top: 4px; }
+.rk--tiivis .rk__aika { font-size: 22px; }
+.rk--tiivis .rk__palkki { margin-top: 10px; }
+.rk--tiivis .rk__taulu thead th { padding-block: 10px 6px; }
+.rk--tiivis .rk__taulu tbody th, .rk--tiivis .rk__taulu td { padding-block: 8px; }
+.rk--tiivis .rk__taulu td:nth-child(2) { font-size: 17px; }
+.rk--tiivis .rk__ala { min-height: 44px; }
+@media (min-width: 1024px) {
+  .rk--tiivis .rk__seuraava { padding: 18px 20px 16px; }
+  .rk--tiivis .rk__taulu tbody th, .rk--tiivis .rk__taulu td { padding-block: 11px; }
+}
+
+/* Pikatoiminnot rukouskortin alla (puhelin ja tabletti) */
+.u-pikatoiminnot { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 10px; padding-top: 80px; }
+.u-pikatoiminnot a {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 6px 12px;
+  background: var(--pinta); border: 1px solid var(--raja); border-radius: var(--r-m); text-align: center;
+  font: 700 13.5px/1.25 var(--ft); color: var(--paa); text-decoration: none; transition: border-color .15s, transform .15s;
+}
+.u-pikatoiminnot a:hover { border-color: var(--kulta); transform: translateY(-2px); }
+.u-pikatoiminnot .u-ikoni { width: 44px; height: 44px; border-radius: 50%; }
+.u-pikatoiminnot + .u-osio { padding-top: 40px; }
+@media (min-width: 1024px) {
+  .u-pikatoiminnot { display: none; }
+  .u-pikatoiminnot + .u-osio { padding-top: 88px; }
+}
+
+/* Lasten opetuksen nappi koko levyiseksi puhelimella */
+@media (max-width: 819px) { .u-nosto .u-nappi { justify-self: stretch; } }
+
+/* Alapalkki: tunnusosa ja alarivi keskelle puhelimella, listat vasemmalle */
+.u-ala { margin-top: 56px; }
+.u-ala__pohja { align-items: center; }
+.u-ala__pohja p { display: flex; align-items: center; flex-wrap: wrap; gap: 0 6px; }
+@media (max-width: 759px) {
+  .u-ala__brand { display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 28px; border-bottom: 1px solid rgb(255 255 255 / .12); }
+  .u-ala__motto { margin-inline: auto; }
+  .u-ala__somet { justify-content: center; }
+  .u-ala__pohja { flex-direction: column; justify-content: center; text-align: center; gap: 0; }
+  .u-ala__pohja p { justify-content: center; }
+}
+@media (min-width: 1024px) { .u-ala { margin-top: 104px; } }
+.rk__ala-tiedot { display: flex; flex-wrap: wrap; gap: 2px 10px; }
+.rk__ala-tiedot [data-rk-nousu]:not(:empty)::after { content: "·"; margin-inline-start: 10px; }
+.rk--tiivis .rk__taulu tbody th, .rk--tiivis .rk__taulu td { padding-block: 9px; }
+@media (max-width: 1023px) { .u-hero__esittely { font-size: 15.5px; line-height: 1.55; } }
+@media (max-width: 1023px) {
+  .rk--tiivis [data-rk-hijri] { display: none; }
+  .rk--tiivis .rk__ala-tiedot [data-rk-nousu]::after { content: none; }
+  .u-hero__teksti > .u-eyebrow { display: none; }
+  .u-hero h1 { margin-top: 4px; }
+}
