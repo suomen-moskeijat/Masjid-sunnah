@@ -56,7 +56,7 @@
 
   /* Pikanapit piiloon, kun rukousaikataulu tai lomake on näkyvissä (eivät peitä tietoja) */
   var pikanapit = document.querySelector('[data-pikanapit]');
-  var suojatut = kaikki('.u-alku, [data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
+  var suojatut = kaikki('[data-rk], [data-kk], .u-lomake, .u-vierailu, .u-lahjoitustiedot, .u-sivupalkki, .u-ala');
   if (pikanapit && suojatut.length && 'IntersectionObserver' in window) {
     var nakyvat = new Set();
     var io = new IntersectionObserver(function (havainnot) {
@@ -65,15 +65,20 @@
     }, { rootMargin: '0px 0px -80px 0px' });
     suojatut.forEach(function (el) { io.observe(el); });
   }
-  // Alaspäin luettaessa piiloon, ylöspäin vieritettäessä esiin
+  // Ei peitetä aloitusnäytön linkkejä ja nappeja (pienet näytöt): piiloon vain, jos osuisi päälle
   if (pikanapit) {
-    var edellinenY = window.scrollY;
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY, ero = y - edellinenY;
-      if (Math.abs(ero) < 8) return;
-      pikanapit.classList.toggle('on-alas', ero > 0 && y > 120);
-      edellinenY = y;
-    }, { passive: true });
+    var alkuKohteet = kaikki('.u-alku a, .u-alku button');
+    var tarkistaPeitto = function () {
+      var r = pikanapit.getBoundingClientRect(), siirto = pikanapit.classList.contains('on-piilossa') ? 16 : 0;
+      var ylin = r.top - siirto - 8, alin = r.bottom - siirto + 8, vasen = r.left - 8, oikea = r.right + 8;
+      var osuu = alkuKohteet.some(function (a) { var q = a.getBoundingClientRect(); return q.width && q.bottom > ylin && q.top < alin && q.right > vasen && q.left < oikea; });
+      pikanapit.classList.toggle('on-peitossa', osuu);
+    };
+    var odottaa = false;
+    var ajasta = function () { if (!odottaa) { odottaa = true; requestAnimationFrame(function () { odottaa = false; tarkistaPeitto(); }); } };
+    window.addEventListener('scroll', ajasta, { passive: true });
+    window.addEventListener('resize', ajasta);
+    tarkistaPeitto();
   }
 
   /* ---------- 3. Tapahtumat: menneet piiloon ---------- */
