@@ -16,10 +16,15 @@ rukousajat: true
       {% if m.hero_tunniste %}<p class="u-eyebrow u-eyebrow--vaalea">{% include kt.html arvo=m.hero_tunniste %}</p>{% endif %}
       <h1>{% if m.hero_otsikko %}{% include kt.html arvo=m.hero_otsikko %}{% else %}{% include nimi.html moskeija=m %}{% endif %}</h1>
       <div class="u-kaari" data-rkn>
+        <span class="u-kaari__paneeli" aria-hidden="true"></span><span class="u-kaari__paneeli" aria-hidden="true"></span>
         <svg class="u-kaari__viiva" viewBox="0 0 300 360" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="u-kaari-hiipuu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
-          <path class="u-kaari__ulko" pathLength="1" d="M8 360V150C8 84 76 34 150 6c74 28 142 78 142 144v210" fill="none" stroke="url(#u-kaari-hiipuu)" stroke-width="1.6"/>
-          <path class="u-kaari__sisa" pathLength="1" d="M22 360V156c0-56 58-100 128-126 70 26 128 70 128 126v204" fill="none" stroke="url(#u-kaari-hiipuu)" stroke-width=".8"/>
+          <defs>
+            <linearGradient id="u-kaari-hiipuu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+            <radialGradient id="u-kaari-valo" cx=".5" cy=".3" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".13"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          </defs>
+          <path class="u-kaari__valo" d="M8 360V176C8 120 40 92 78 70C112 50 138 32 150 6C162 32 188 50 222 70C260 92 292 120 292 176V360Z" fill="url(#u-kaari-valo)"/>
+          <path class="u-kaari__ulko" pathLength="1" d="M8 360V176C8 120 40 92 78 70C112 50 138 32 150 6C162 32 188 50 222 70C260 92 292 120 292 176V360" fill="none" stroke="url(#u-kaari-hiipuu)" stroke-width="1.6"/>
+          <path class="u-kaari__sisa" pathLength="1" d="M22 360V180C22 130 50 104 86 84C116 66 138 50 150 28C162 50 184 66 214 84C250 104 278 130 278 180V360" fill="none" stroke="url(#u-kaari-hiipuu)" stroke-width=".8"/>
         </svg>
         <p class="u-kaari__otsikko">{% include k.html a="seuraava_rukous" %}</p>
         <p class="u-kaari__nimi" data-rkn-nimi>&nbsp;</p>
