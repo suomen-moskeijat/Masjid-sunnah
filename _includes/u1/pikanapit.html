@@ -1,7 +1,7 @@
 {%- comment -%}
   Pikayhteys: pyöreä WhatsApp-nappi oikeassa alakulmassa (puhelin löytyy valikosta,
-  yhteystiedoista ja alapalkista). Näkyy aina, paitsi kun rukousaikataulu, lomake,
-  yhteystiedot tai alapalkki on näkyvissä – ks. uusi-v1.js.
+  yhteystiedoista ja alapalkista). Piiloutuu alaspäin vieritettäessä ja palaa ylöspäin
+  vieritettäessä; piilossa myös rukousaikataulun, lomakkeiden, yhteystietojen ja alapalkin kohdalla – ks. uusi-v1.js.
 {%- endcomment -%}
 {%- assign m = include.moskeija -%}
 {%- assign wa = m.whatsapp | default: "" | remove: " " | remove: "+" | remove: "-" -%}

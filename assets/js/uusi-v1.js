@@ -65,6 +65,16 @@
     }, { rootMargin: '0px 0px -80px 0px' });
     suojatut.forEach(function (el) { io.observe(el); });
   }
+  // Alaspäin luettaessa piiloon, ylöspäin vieritettäessä esiin (aloitusnäytöllä näkyvissä)
+  if (pikanapit) {
+    var edellinenY = window.scrollY;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY, ero = y - edellinenY;
+      if (Math.abs(ero) < 8) return;
+      pikanapit.classList.toggle('on-alas', ero > 0 && y > 120);
+      edellinenY = y;
+    }, { passive: true });
+  }
   // Ei peitetä aloitusnäytön linkkejä ja nappeja (pienet näytöt): piiloon vain, jos osuisi päälle
   if (pikanapit) {
     var alkuKohteet = kaikki('.u-alku a, .u-alku button');

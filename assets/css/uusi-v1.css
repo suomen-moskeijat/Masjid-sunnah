@@ -466,7 +466,7 @@ html.u-lukittu { overflow: hidden; }
 /* ---------- 12. Pikanapit ---------- */
 .u-pikanapit { position: fixed; z-index: 40; inset-inline-end: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .u-pikanapit { transition: opacity .25s, transform .25s; }
-.u-pikanapit.on-piilossa, .u-pikanapit.on-peitossa { opacity: 0; transform: translateY(16px); pointer-events: none; }
+.u-pikanapit.on-piilossa, .u-pikanapit.on-peitossa, .u-pikanapit.on-alas { opacity: 0; transform: translateY(16px); pointer-events: none; }
 body.on-valikko .u-pikanapit { display: none; }
 .u-pikanappi { display: grid; place-items: center; border-radius: 50%; text-decoration: none; box-shadow: 0 10px 24px -8px rgb(0 0 0 / .45); transition: transform .15s; }
 .u-pikanappi:hover { transform: scale(1.06); }
