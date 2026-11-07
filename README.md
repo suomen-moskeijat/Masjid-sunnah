@@ -1,5 +1,7 @@
 # Masjid Sunnah Helsinki – verkkosivusto
 
+**Sivusto:** https://suomen-moskeijat.github.io/Masjid-sunnah/
+
 Masjid Sunnah Helsingin (Ylä-Malmin tori 6B) verkkosivut: rukousajat iqamah-aikoineen,
 Meistä, Opetus ja palvelut, lasten opetukseen ilmoittautuminen, tapahtumat, artikkelit,
 yhteystiedot, lahjoitukset ja tietosuoja – suomeksi, englanniksi, arabiaksi ja somaliksi.
