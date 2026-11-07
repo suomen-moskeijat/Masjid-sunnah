@@ -93,7 +93,6 @@
   var RUKOUKSET = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
   var VARSINAISET = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
   var CSV = { fajr: 'fajr', sunrise: 'auringonnousu', dhuhr: 'dhuhr', asr: 'asr', maghrib: 'maghrib', isha: 'isha' };
-  var ARABIAKSI = { fajr: 'الفجر', sunrise: 'الشروق', dhuhr: 'الظهر', asr: 'العصر', maghrib: 'المغرب', isha: 'العشاء', jumua: 'الجمعة' };
   var NIMET = {
     fi: { fajr: 'Fajr', sunrise: 'Auringonnousu', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha', jumua: "Jumu'a", huomenna: 'huomenna', klo: 'klo', pv: 'Päivä', nousu: 'Nousu' },
     en: { fajr: 'Fajr', sunrise: 'Sunrise', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha', jumua: "Jumu'ah", huomenna: 'tomorrow', klo: 'at', pv: 'Day', nousu: 'Sunrise' },
@@ -209,10 +208,6 @@
         var th = document.createElement('th');
         th.scope = 'row';
         th.textContent = rukousNimi(n, t.jumua);
-        var ar = document.createElement('span');
-        ar.className = 'rk__ar'; ar.lang = 'ar';
-        ar.textContent = (n === 'dhuhr' && t.jumua) ? ARABIAKSI.jumua : ARABIAKSI[n];
-        th.appendChild(ar);
         var td1 = document.createElement('td'); td1.textContent = aika(t[n]);
         var td2 = document.createElement('td'); td2.textContent = t.iqamah[n] ? aika(t.iqamah[n]) : '';
         tr.appendChild(th); tr.appendChild(td1); tr.appendChild(td2);
@@ -227,13 +222,11 @@
     var nyt = new Date(), s = nykytila.seuraava, e = nykytila.edellinen;
     if (!(s.aika instanceof Date) || isNaN(s.aika)) return;
     if (s.aika <= nyt) { piirraPaiva(); return; }
-    var osuus = (e && e.aika) ? Math.min(1, Math.max(0, (nyt - e.aika) / (s.aika - e.aika))) : 0;
     var nimi = rukousNimi(s.nimi, !s.huomenna && nykytila.tanaan.jumua) + (s.huomenna ? ' (' + N().huomenna + ')' : '');
     kaikki('[data-rk]').forEach(function (rk) {
       rk.querySelector('[data-rk-nimi]').textContent = nimi;
       rk.querySelector('[data-rk-klo]').textContent = N().klo + ' ' + aika(s.aika);
       rk.querySelector('[data-rk-jaljella]').textContent = kesto(s.aika - nyt);
-      rk.querySelector('[data-rk-palkki]').style.width = (osuus * 100).toFixed(1) + '%';
     });
   }
 

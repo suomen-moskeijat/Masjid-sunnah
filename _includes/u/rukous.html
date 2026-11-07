@@ -1,13 +1,13 @@
 {%- comment -%}
-  Päivän rukousajat: seuraava rukous (aika, laskuri, edistyminen) ja päivän taulukko
+  Päivän rukousajat: seuraava rukous (aika ja laskuri) ja päivän taulukko
   (adhan + iqamah). Vaatii sivulle u/rukousdata.html:n. Parametrit: linkki (true = "Koko aikataulu"), tiivis (true = matalammat rivit etusivulle)
 {%- endcomment -%}
 <section class="rk{% if include.tiivis %} rk--tiivis{% endif %}" data-rk aria-label="{{ site.data.kaannokset.rukousajat.fi }}">
   <div class="rk__seuraava">
     <p class="rk__eyebrow">{% include k.html a="seuraava_rukous" %}</p>
+    <p class="rk__jaljella">{% include k.html a="jaljella" %}</p>
     <p class="rk__nimi"><span data-rk-nimi>&nbsp;</span> <span class="rk__klo" data-rk-klo></span></p>
-    <p class="rk__laskuri"><span class="rk__aika" data-rk-jaljella dir="ltr">--:--:--</span><small>{% include k.html a="jaljella" %}</small></p>
-    <div class="rk__palkki" aria-hidden="true"><span data-rk-palkki></span></div>
+    <p class="rk__aika" data-rk-jaljella dir="ltr">--:--:--</p>
   </div>
   <table class="rk__taulu">
     <caption class="u-nakymaton">{% include k.html a="paivan_ajat" %}</caption>
