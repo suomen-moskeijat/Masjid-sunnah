@@ -289,4 +289,8 @@ teema:
   logo_pieni: /tiedostot/masjid-sunnah/logo-640.png
   merkki: /tiedostot/masjid-sunnah/merkki.png   # logo ilman laatikkoa, läpinäkyvä (uusi-v2:n yläosa)   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
   hero: vaalea
+
+# Yhteiset artikkelit (islaminusko.fi, lähdemerkinnällä). Tyhjä lista = vain omat artikkelit.
+artikkelit:
+  lahteet: [islaminusko]
 ---
