@@ -1,9 +1,0 @@
-{%- assign a = include.artikkeli -%}
-{%- assign mosk_avain = a.moskeija | default: site.moskeija -%}
-{%- assign mosk = site.moskeijat | where: 'slug', mosk_avain | first -%}
-<article class="kortti artikkelikortti">
-  {% if a.kansikuva and a.kansikuva != "" %}<img src="{{ a.kansikuva | relative_url }}" alt="" loading="lazy">{% endif %}
-  <h3><a href="{{ a.url | relative_url }}">{{ a.title }}</a></h3>
-  <p class="hienoinen">{{ a.date | date: '%-d.%-m.%Y' }}{% if mosk %} · {% include nimi.html moskeija=mosk %}{% endif %}{% if a.liitteet.size > 0 %} · 📎 {{ a.liitteet.size }}{% endif %}</p>
-  <p>{{ a.tiivistelma | default: a.excerpt | strip_html | truncate: 180 }}</p>
-</article>

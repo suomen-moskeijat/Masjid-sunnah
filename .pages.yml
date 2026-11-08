@@ -1,5 +1,5 @@
 # Pages CMS -muokkausnäkymän asetukset (https://pagescms.org)
-# Moskeijat voivat tämän avulla lisätä tapahtumia, artikkeleita ja tiedostoja
+# Moskeija voi tämän avulla muokata omia tietojaan ja lisätä tapahtumia
 # selaimessa ilman koodaamista. Muutos julkaistaan automaattisesti sivustolle.
 
 media:
@@ -7,6 +7,57 @@ media:
   output: /tiedostot
 
 content:
+  - name: artikkelit
+    label: Artikkelit
+    type: collection
+    path: _artikkelit
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, paiva]
+      default: { sort: paiva, order: desc }
+    fields:
+      - { name: title, label: Otsikko, type: string, required: true }
+      - { name: paiva, label: Päivämäärä, type: date, required: true }
+      - { name: kirjoittaja, label: Kirjoittaja, type: string }
+      - name: aihe
+        label: Aihe
+        type: select
+        description: "Valitse listasta. Jos sopivaa ei ole, kirjoita uusi aihe kenttään – se tulee artikkelisivulle omaksi napikseen."
+        options: { values: [Tiedotteet, Islamin perusteet, Ohjeet, Käytös ja tavat, Juhlat, Kysymykset, Profeetta ja hadithit, Dhikr ja dua, Muut], creatable: true }
+      - { name: kuvaus, label: Lyhyt kuvaus (näkyy listassa), type: text }
+      - { name: kuva, label: Kuva, type: image }
+      - { name: body, label: Teksti, type: rich-text }
+
+  - name: sivut
+    label: Omat sivut
+    type: collection
+    path: _sivut
+    filename: "{primary}.md"
+    view:
+      fields: [title, valikossa, jarjestys]
+    fields:
+      - { name: title, label: Sivun nimi (suomi), type: string, required: true, description: "Tiedoston nimestä tulee osoite, esim. hyvat-lahteet → /hyvat-lahteet/" }
+      - { name: otsikko_en, label: Nimi englanniksi, type: string }
+      - { name: otsikko_ar, label: Nimi arabiaksi, type: string }
+      - { name: otsikko_so, label: Nimi somaliksi, type: string }
+      - { name: valikossa, label: Näytä valikossa, type: boolean, default: true }
+      - { name: jarjestys, label: Järjestys valikossa, type: number, default: 1 }
+      - { name: johdanto, label: Lyhyt johdanto (suomi), type: text }
+      - { name: kuva, label: Kuva, type: image }
+      - { name: body, label: Sisältö (suomi), type: rich-text }
+      - { name: teksti_en, label: Sisältö englanniksi, type: rich-text }
+      - { name: teksti_ar, label: Sisältö arabiaksi, type: rich-text }
+      - { name: teksti_so, label: Sisältö somaliksi, type: rich-text }
+      - name: linkit
+        label: Linkit kortteina (kirjat, lähteet, tiedostot)
+        type: object
+        list: true
+        fields:
+          - { name: nimi, label: Nimi, type: string }
+          - { name: kuvaus, label: Kuvaus, type: string }
+          - { name: osoite, label: Osoite tai tiedosto, type: string, description: "https://… tai /tiedostot/kirja.pdf" }
+          - { name: kuvake, label: Kuvake, type: select, options: { values: [kirja, maailma, toista, hattu, kalenteri, sydan] } }
+
   - name: tapahtumat
     label: Tapahtumat
     type: collection
@@ -23,10 +74,6 @@ content:
       - { name: otsikko_en, label: Tapahtuman nimi englanniksi, type: string }
       - { name: otsikko_ar, label: Tapahtuman nimi arabiaksi, type: string }
       - { name: otsikko_so, label: Tapahtuman nimi somaliksi, type: string }
-      - name: moskeija
-        label: Moskeija
-        type: string
-        description: Moskeijan tiedostonimi ilman .md-päätettä, esim. esimerkki-helsinki. Ei tarvita moskeijan omalla sivustolla.
       - { name: paiva, label: Päivämäärä, type: date, required: true }
       - { name: paiva_loppuu, label: Päättymispäivä (jos useampipäiväinen), type: date }
       - { name: alkaa, label: Alkaa klo, type: string, description: "esim. 18.00" }
@@ -36,32 +83,6 @@ content:
       - { name: kuva, label: Kuva, type: image }
       - { name: body, label: Kuvaus, type: rich-text }
 
-  - name: artikkelit
-    label: Artikkelit ja tiedostot
-    type: collection
-    path: _posts
-    filename: "{year}-{month}-{day}-{primary}.md"
-    view:
-      fields: [title, date, moskeija]
-    fields:
-      - { name: title, label: Otsikko, type: string, required: true }
-      - { name: date, label: Julkaisupäivä, type: date, required: true }
-      - name: moskeija
-        label: Moskeija
-        type: string
-        description: Moskeijan tiedostonimi ilman .md-päätettä, esim. esimerkki-helsinki. Ei tarvita moskeijan omalla sivustolla.
-      - { name: kirjoittaja, label: Kirjoittaja, type: string }
-      - { name: tiivistelma, label: Tiivistelmä, type: text, description: Lyhyt kuvaus artikkelilistaan }
-      - { name: kansikuva, label: Kansikuva, type: image }
-      - name: liitteet
-        label: Ladattavat tiedostot
-        type: object
-        list: true
-        fields:
-          - { name: nimi, label: Tiedoston nimi sivulla, type: string }
-          - { name: tiedosto, label: Tiedosto, type: file }
-      - { name: body, label: Teksti, type: rich-text }
-
   - name: moskeijat
     label: Moskeijat
     type: collection
@@ -70,6 +91,8 @@ content:
     view:
       fields: [title, kaupunki]
     fields:
+      # --- Julkaisu ---
+      - { name: luonnos, label: "Luonnos (sivu ei vielä julkinen)", type: boolean, description: "Uusi sivu on luonnos: ylhäällä on luonnos-palkki, eikä Google näytä sivua. Kun moskeija on tarkistanut ja hyväksynyt sivun, poista valinta ja tallenna." }
       # --- Perustiedot ---
       - { name: title, label: Moskeijan nimi (suomi), type: string, required: true }
       - { name: nimi_en, label: Nimi englanniksi, type: string }
@@ -90,7 +113,6 @@ content:
       - { name: nettisivu, label: Oma nettisivu (hakemistoa varten), type: string }
       - { name: kielet, label: Toiminnan kielet, type: string, list: true }
       - { name: juma, label: Perjantairukouksen aika, type: string, description: "esim. 13.30" }
-      - { name: kuva, label: Valokuva moskeijasta (sivun alkuun), type: image }
       - { name: lomake_osoite, label: Lomakepalvelun osoite (valinnainen), type: string, description: "esim. https://formspree.io/f/xxxx – ilman tätä lomakkeet avautuvat valmiina WhatsApp-viestinä" }
 
       # --- Etusivun alkuosa ---
@@ -112,6 +134,37 @@ content:
           - { name: ar, label: العربية, type: text }
           - { name: so, label: Soomaali, type: text }
       - { name: tunnuslause, label: Tunnuslause (alapalkki), type: object, fields: *kielet_rivi }
+      - name: alku
+        label: Etusivun yläosa (tausta ja napit)
+        type: object
+        fields:
+          - { name: tausta, label: Tausta, type: select, description: "kuvio = vaalea kuviotausta (oletus), kuva = oma valokuva (tummennetaan, teksti valkoinen), vari = moskeijan pääväri", options: { values: [kuvio, kuva, vari] } }
+          - { name: kuva, label: Taustakuva (kun tausta = kuva), type: image, description: "Vaakakuva, vähintään 1600 px leveä. Esim. rukoussali tai moskeija ulkoa." }
+          - name: napit
+            label: Napit (enintään 2, ensimmäinen korostetaan)
+            type: select
+            description: "lapsi = Ilmoita lapsesi opetukseen, toiminta = Tutustu toimintaamme, rukousajat, lahjoita, yhteys = Ota yhteyttä, oma = oma nappi alla. Voit kirjoittaa myös oman sivun nimen, esim. hyvat-lahteet."
+            options: { values: [lapsi, toiminta, rukousajat, lahjoita, yhteys, oma], multiple: true, creatable: true }
+          - name: oma_nappi
+            label: Oma nappi (kun napeissa on oma)
+            type: object
+            fields:
+              - { name: teksti, label: Napin teksti, type: object, fields: *kielet_rivi }
+              - { name: linkki, label: Linkki, type: string, description: "esim. /hyvat-lahteet/ tai https://…" }
+      - name: artikkelit
+        label: Yhteiset artikkelit
+        type: object
+        fields:
+          - name: lahteet
+            label: Näytä myös nämä artikkelit
+            type: select
+            description: "islaminusko = noin 110 suomenkielistä artikkelia islaminusko.fi:stä (lähdemerkinnällä, päivittyy viikoittain). Moskeijan omat artikkelit lisätään kohdassa Artikkelit."
+            options: { values: [islaminusko], multiple: true }
+      - name: valikko_piilota
+        label: Piilota valikosta
+        type: select
+        description: "Sivut, joita moskeijalla ei ole käytössä. Lahjoita piilotetaan myös etusivulta."
+        options: { values: [rukousajat, meista, palvelut, tapahtumat, artikkelit, yhteystiedot, lahjoita], multiple: true }
       - name: kortit
         label: Etusivun kortit
         type: object
@@ -175,24 +228,17 @@ content:
       - name: some
         label: Sosiaalinen media
         type: object
+        description: Lisää vain ne, joita moskeija käyttää – tyhjät eivät näy sivulla.
         fields:
-          - { name: facebook, label: Facebook-sivun osoite, type: string, description: Julkaisut ja tapahtumat näytetään sivulla automaattisesti. }
-          - { name: instagram, label: Instagram-osoite, type: string }
-          - name: instagram_julkaisut
-            label: Instagram-julkaisut ja julisteet
-            type: string
-            list: true
-            description: Liitä julkaisun osoite, esim. https://www.instagram.com/p/ABC123/
-          - { name: youtube, label: YouTube-kanavan osoite, type: string }
-          - { name: youtube_kanava_id, label: YouTube-kanavan tunnus (UC...), type: string, description: Uusimmat videot näkyvät automaattisesti. Tunnus löytyy YouTubesta kohdasta Asetukset → Lisäasetukset. }
-          - { name: tiktok, label: TikTok-profiilin osoite, type: string, description: "esim. https://www.tiktok.com/@moskeija – uusimmat videot näkyvät automaattisesti" }
-          - name: upotuskoodi
-            label: Upotuskoodi (valinnainen)
-            type: code
-            options: { format: html }
-            description: Esim. ilmaisen Instagram-widgetin (Behold, LightWidget, SnapWidget) HTML-koodi.
-
-      # --- Rukousajat ---
+          - { name: instagram, label: Instagram, type: string, description: "esim. https://www.instagram.com/tili/ – uusimmat julkaisut näkyvät sivulla automaattisesti" }
+          - { name: facebook, label: Facebook, type: string, description: "esim. https://www.facebook.com/sivu" }
+          - { name: youtube, label: YouTube, type: string, description: "esim. https://www.youtube.com/@kanava – uusimmat videot näkyvät sivulla automaattisesti" }
+          - { name: tiktok, label: TikTok, type: string, description: "esim. https://www.tiktok.com/@tili" }
+          - { name: telegram, label: Telegram, type: string, description: "esim. https://t.me/kanava – julkisen kanavan julkaisut näkyvät sivulla automaattisesti" }
+          - { name: snapchat, label: Snapchat, type: string, description: "esim. https://www.snapchat.com/add/tili" }
+          - { name: x, label: X (Twitter), type: string, description: "esim. https://x.com/tili" }
+          - { name: threads, label: Threads, type: string, description: "esim. https://www.threads.net/@tili" }
+          - { name: whatsapp_kanava, label: WhatsApp-kanava, type: string, description: "esim. https://whatsapp.com/channel/... (WhatsApp-numero lisätään yhteystietoihin)" }
       - name: rukousajat
         label: Rukousajat
         type: object
@@ -248,6 +294,7 @@ content:
         type: object
         fields:
           - { name: logo, label: Logo, type: image }
+          - { name: logo_vaalea, label: "Logo tummalle taustalle (alapalkki), valinnainen", type: image }
           - { name: hero, label: Alkuosan tyyli, type: select, options: { values: [vaalea, tumma] } }
           - { name: paa, label: "Pääväri (esim. #3f2717)", type: string }
           - { name: paa_tumma, label: Tumma sävy, type: string }
