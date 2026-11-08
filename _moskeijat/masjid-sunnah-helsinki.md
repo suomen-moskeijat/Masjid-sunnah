@@ -1,4 +1,5 @@
 ---
+luonnos: true        # moskeija tarkistaa sivun; kun hyväksytty → false (Pages CMS: Moskeijat → Luonnos)
 # Masjid Sunnah Helsinki – tiedot siirretty sivulta masjidsunna.lovable.app (7.11.2026).
 # Tyhjät kentät (sähköposti, perjantairukouksen aika, Facebook, TikTok, YouTube,
 # lahjoitustiedot) puuttuivat alkuperäiseltä sivulta – täytä ne, kun ne ovat tiedossa.
