@@ -1,5 +1,5 @@
 ---
-luonnos: true        # moskeija tarkistaa sivun; kun hyväksytty → false (Pages CMS: Moskeijat → Luonnos)
+luonnos: true # moskeija tarkistaa sivun; kun hyväksytty → false (Pages CMS: Moskeijat → Luonnos)
 # Masjid Sunnah Helsinki – tiedot siirretty sivulta masjidsunna.lovable.app (7.11.2026).
 # Tyhjät kentät (sähköposti, perjantairukouksen aika, Facebook, TikTok, YouTube,
 # lahjoitustiedot) puuttuivat alkuperäiseltä sivulta – täytä ne, kun ne ovat tiedossa.
@@ -9,15 +9,16 @@ nimi_ar: "مسجد السنة هلسنكي"
 nimi_so: Masjid Sunnah Helsinki
 kaupunki: Helsinki
 osoite: Ylä-Malmin tori 6B, 00700 Helsinki
-sijainti:   # likimääräinen – tarkista kartalta
+sijainti:
+  # likimääräinen – tarkista kartalta
   lat: 60.2509
   lon: 25.0102
 puhelin: "+358 45 278 4866"
 whatsapp: "+358 45 278 4866"
 sahkoposti: ""
-kielet: [suomi, arabia, somali]
-juma: ""          # perjantairukouksen aika, esim. "13.30"
-kuva: ""          # moskeijan valokuva (näkyy sivun alussa)
+kielet: [ suomi, arabia, somali ]
+juma: "" # perjantairukouksen aika, esim. "13.30"
+kuva: "" # moskeijan valokuva (näkyy sivun alussa)
 
 hero_tunniste:
   fi: "Malmi, Helsinki"
@@ -254,13 +255,13 @@ lahjoitus:
     en: "Your donation supports the mosque's activities, education and building maintenance. Every gift helps keep the mosque open to all."
     ar: "تبرّعك يدعم أنشطة المسجد والتعليم وصيانة المبنى. كل تبرّع يساعد على إبقاء المسجد مفتوحاً للجميع."
     so: "Deeqdaadu waxay taageertaa hawlaha masjidka, waxbarashada iyo dayactirka goobta. Deeq kastaa waxay ka caawisaa in masjidku u furnaado qof walba."
-  saaja: ""          # esim. Masjid Sunnah Helsinki ry
-  tilinumero: ""     # IBAN
+  saaja: "" # esim. Masjid Sunnah Helsinki ry
+  tilinumero: "" # IBAN
   viite: ""
   mobilepay: ""
-  linkki: ""         # verkkomaksun osoite
+  linkki: "" # verkkomaksun osoite
 
-galleria: []         # kuvien polut, esim. /tiedostot/sali.jpg
+galleria: [] # kuvien polut, esim. /tiedostot/sali.jpg
 
 # Some-tilit tarkistettu 7.11.2026 (masjidsunnah.fi ja haut): Instagram ja WhatsApp.
 # Facebook-, TikTok- tai YouTube-tiliä ei löytynyt – lisää osoite, jos sellainen avataan.
@@ -276,22 +277,22 @@ some:
 rukousajat:
   # Mistä ajat tulevat: masjidbox | mawaqit | taulukko | laskenta (ks. OHJE-UUSI-MOSKEIJA.md)
   lahde: masjidbox
-  tunnus: masjid-sunnah-helsinki      # masjidbox.com/prayer-times/<tunnus>
-  aikataulu: masjid-sunnah-helsinki   # haetut ajat: _data/aikataulut/masjid-sunnah-helsinki/ (oletus: moskeijan slug)
+  tunnus: masjid-sunnah-helsinki # masjidbox.com/prayer-times/<tunnus>
+  aikataulu: masjid-sunnah-helsinki # haetut ajat: _data/aikataulut/masjid-sunnah-helsinki/ (oletus: moskeijan slug)
   virallinen_url: "https://masjidbox.com/prayer-times/masjid-sunnah-helsinki"
   iqamah_oletus: { fajr: 10, dhuhr: 10, asr: 10, maghrib: 5, isha: 10 }
-  laskentatapa: MuslimWorldLeague     # varalla, jos kuukauden aikataulua ei ole lisätty
+  laskentatapa: MuslimWorldLeague # varalla, jos kuukauden aikataulua ei ole lisätty
   madhab: Shafi
-  korkeat_leveysasteet: TwilightAngle   # kuten rukousajat.fi
+  korkeat_leveysasteet: TwilightAngle # kuten rukousajat.fi
 
 teema:
   # Värit ja fontit: pohjan oletukset (Lovable-sivun värit). Omat värit: paa, korostus, korostus_vaalea …
   logo: /tiedostot/masjid-sunnah/logo.png
   logo_pieni: /tiedostot/masjid-sunnah/logo-640.png
-  merkki: /tiedostot/masjid-sunnah/merkki.png   # logo ilman laatikkoa, läpinäkyvä (uusi-v2:n yläosa)   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
+  merkki: /tiedostot/masjid-sunnah/merkki.png # logo ilman laatikkoa, läpinäkyvä (uusi-v2:n yläosa)   # pienennetty (26 kt) – käytetään uudessa ulkoasussa
   hero: vaalea
 
 # Yhteiset artikkelit (islaminusko.fi, lähdemerkinnällä). Tyhjä lista = vain omat artikkelit.
 artikkelit:
-  lahteet: [islaminusko]
+  lahteet: []
 ---
