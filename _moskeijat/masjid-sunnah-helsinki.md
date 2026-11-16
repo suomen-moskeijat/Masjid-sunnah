@@ -13,7 +13,7 @@ sijainti:
   # likimääräinen – tarkista kartalta
   lat: 60.2509
   lon: 25.0102
-puhelin: "+358 45 278 4866"
+puhelin: "+358449894148"
 whatsapp: "+358 45 278 4866"
 sahkoposti: ""
 kielet: [ suomi, arabia, somali ]
