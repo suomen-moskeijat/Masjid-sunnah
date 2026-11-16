@@ -14,7 +14,7 @@ sijainti:
   lat: 60.2509
   lon: 25.0102
 puhelin: "+358449894148"
-whatsapp: "+358 45 278 4866"
+whatsapp: "+358449894148"
 sahkoposti: ""
 kielet: [ suomi, arabia, somali ]
 juma: "" # perjantairukouksen aika, esim. "13.30"
