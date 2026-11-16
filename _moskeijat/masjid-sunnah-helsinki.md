@@ -15,7 +15,7 @@ sijainti:
   lon: 25.0102
 puhelin: "+358449894148"
 whatsapp: "+358449894148"
-sahkoposti: ""
+sahkoposti: "mustaffaden@gmail.com"
 kielet: [ suomi, arabia, somali ]
 juma: "" # perjantairukouksen aika, esim. "13.30"
 kuva: "" # moskeijan valokuva (näkyy sivun alussa)
