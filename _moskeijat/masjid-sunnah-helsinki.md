@@ -266,12 +266,10 @@ galleria: [] # kuvien polut, esim. /tiedostot/sali.jpg
 # Some-tilit tarkistettu 7.11.2026 (masjidsunnah.fi ja haut): Instagram ja WhatsApp.
 # Facebook-, TikTok- tai YouTube-tiliä ei löytynyt – lisää osoite, jos sellainen avataan.
 some:
-  facebook: ""
   instagram: "https://www.instagram.com/masjidsunnah.fin/"
   instagram_julkaisut: []
-  youtube: ""
+  youtube: "https://www.youtube.com/@hikmahnuoret"
   youtube_kanava_id: ""
-  tiktok: ""
   upotuskoodi: ""
 
 rukousajat:
