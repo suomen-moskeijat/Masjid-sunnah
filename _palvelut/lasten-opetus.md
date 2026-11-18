@@ -124,11 +124,6 @@ teksti_en: We study Quran reading, basics of Islam and good manners. Register yo
 teksti_ar: نحن ندرس قراءة القرآن، وأصول الإسلام، والآداب الحسنة. سجّل طفلك باستخدام النموذج أدناه - سيتم إرسال الرسالة إلى المركز عبر البريد الإلكتروني.
 teksti_so: Waxba koorinta Koraaniga, asaasaha Islaamka iyo wanaagga akhlaaq. Xagee carruurtadaada formka hoose ugu soo gudbin – warqaaduhu wuxuu u socdaa emailka xarunta.
 kone_kaannos:
-  - kuvaus.en
-  - nimi.en
-  - vaihtoehdot.en
-  - title.en
-  - body.en
   - kuvaus.ar
   - nimi.ar
   - vaihtoehdot.ar
