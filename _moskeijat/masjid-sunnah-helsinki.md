@@ -150,27 +150,6 @@ palvelut_esittely:
   ar: "يقدّم مسجد السنة هلسنكي الصلوات والتعليم والأنشطة المجتمعية لجميع الأعمار."
   so: "Masjid Sunnah Helsinki wuxuu bixiyaa salaado, waxbarasho iyo hawlo bulsho dhammaan da'da."
 
-lasten_opetus:
-  kaytossa: true
-  teksti:
-    fi: "Masjid Sunnah Helsingin madrasah tarjoaa islamin ja Koraanin opetusta 5–16-vuotiaille. Täytä alla oleva lomake ilmoittaaksesi lapsesi opetukseen. Otamme sinuun yhteyttä ilmoittautumisen jälkeen."
-    en: "The Masjid Sunnah Helsinki madrasah offers Islamic and Quran education for ages 5–16. Fill in the form below to register your child. We will contact you after registration."
-    ar: "تقدّم مدرسة مسجد السنة هلسنكي تعليم القرآن والعلوم الإسلامية للأعمار 5–16. املأ النموذج أدناه لتسجيل طفلك، وسنتواصل معك بعد التسجيل."
-    so: "Madrasada Masjid Sunnah Helsinki waxay bixisaa waxbarasho Islaam iyo Quraan carruurta 5–16 jir ah. Buuxi foomka hoose si aad ilmahaaga u diiwaangeliso. Waan kula soo xiriiri doonnaa."
-  tyypit:
-    - fi: "Koraanin opetus"
-      en: "Quran education"
-      ar: "تعليم القرآن"
-      so: "Barashada Quraanka"
-    - fi: "Islamin perusteet"
-      en: "Islamic basics"
-      ar: "أساسيات الإسلام"
-      so: "Aasaaska Islaamka"
-    - fi: "Molemmat"
-      en: "Both"
-      ar: "كلاهما"
-      so: "Labadaba"
-
 lahjoitus:
   teksti:
     fi: "Lahjoituksesi tukee moskeijan toimintaa, opetusta ja tilojen ylläpitoa. Jokainen lahjoitus auttaa pitämään moskeijan avoimena kaikille."
@@ -215,4 +194,47 @@ teema:
 # Yhteiset artikkelit (islaminusko.fi, lähdemerkinnällä). Tyhjä lista = vain omat artikkelit.
 artikkelit:
   lahteet: []
+alku:
+  napit:
+    - oma
+    - toiminta
+  oma_nappi:
+    teksti:
+      fi: Ilmoita lapsesi opetukseen
+      en: Register your child for classes
+      ar: سجّل طفلك في الدروس
+      so: Ka diiwaangeli ilmahaaga waxbarashada
+    linkki: /palvelut/lasten-opetus/
+etusivu:
+  - osio: palvelut
+  - osio: nosto
+    kuvake: hattu
+    yla:
+      fi: Lasten opetus
+      en: Children's education
+      ar: تعليم الأطفال
+      so: Waxbarashada carruurta
+    otsikko:
+      fi: Ilmoita lapsesi opetukseen
+      en: Register your child for classes
+      ar: سجّل طفلك في الدروس
+      so: Ka diiwaangeli ilmahaaga waxbarashada
+    teksti:
+      fi: Masjid Sunnah Helsingin madrasah tarjoaa islamin ja Koraanin opetusta 5–16-vuotiaille.
+      en: The Masjid Sunnah Helsinki madrasah offers Islamic and Quran education for ages 5–16.
+      ar: تقدّم مدرسة مسجد السنة هلسنكي تعليم القرآن والعلوم الإسلامية للأعمار 5–16.
+      so: Madrasada Masjid Sunnah Helsinki waxay bixisaa waxbarasho Islaam iyo Quraan carruurta 5–16 jir ah.
+    nappi_teksti:
+      fi: Ilmoittaudu
+      en: Register
+      ar: سجّل الآن
+      so: Is diiwaangeli
+    nappi_linkki: /palvelut/lasten-opetus/
+  - osio: tapahtumat
+  - osio: artikkelit
+  - osio: meista
+  - osio: galleria
+  - osio: somet
+  - osio: lahjoitus
+  - osio: vierailu
 ---
