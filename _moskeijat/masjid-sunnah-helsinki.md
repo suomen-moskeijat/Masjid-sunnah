@@ -206,7 +206,6 @@ alku:
       so: Ka diiwaangeli ilmahaaga waxbarashada
     linkki: /palvelut/lasten-opetus/
 etusivu:
-  - osio: palvelut
   - osio: meista
   - osio: somet
   - osio: lahjoitus
