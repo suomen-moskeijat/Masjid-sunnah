@@ -196,8 +196,8 @@ artikkelit:
   lahteet: []
 alku:
   napit:
-    - lapsi
     - toiminta
+    - yhteys
   oma_nappi:
     teksti:
       fi: Ilmoita lapsesi opetukseen
