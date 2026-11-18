@@ -196,7 +196,7 @@ artikkelit:
   lahteet: []
 alku:
   napit:
-    - oma
+    - lapsi
     - toiminta
   oma_nappi:
     teksti:
