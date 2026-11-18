@@ -116,7 +116,7 @@ lomake:
     ar: إرسال الرسالة
     so: Dir fariinta
   lahetys: whatsapp
-  whatsapp: "+966556486748"
+  whatsapp: "+358458091780"
 otsikko_en: Children's Education
 otsikko_ar: تعليم الأطفال
 otsikko_so: Barandhiga Yara
