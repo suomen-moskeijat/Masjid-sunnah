@@ -189,9 +189,6 @@ rukousajat:
   aikataulu: masjid-sunnah-helsinki # haetut ajat: _data/aikataulut/masjid-sunnah-helsinki/ (oletus: moskeijan slug)
   virallinen_url: "https://masjidbox.com/prayer-times/masjid-sunnah-helsinki"
   iqamah_oletus: { fajr: 10, dhuhr: 10, asr: 10, maghrib: 5, isha: 10 }
-  laskentatapa: MuslimWorldLeague # varalla, jos kuukauden aikataulua ei ole lisätty
-  madhab: Shafi
-  korkeat_leveysasteet: TwilightAngle # kuten rukousajat.fi
 
 teema:
   # Värit ja fontit: pohjan oletukset (Lovable-sivun värit). Omat värit: paa, korostus, korostus_vaalea …
