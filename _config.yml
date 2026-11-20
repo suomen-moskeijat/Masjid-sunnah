@@ -8,3 +8,4 @@ moskeija: masjid-sunnah-helsinki     # tiedosto _moskeijat/masjid-sunnah-helsink
 # Omalla verkkotunnuksella (esim. masjidsunnah.fi): url: "https://masjidsunnah.fi" ja baseurl: ""
 url: "https://suomen-moskeijat.github.io"
 baseurl: "/Masjid-sunnah"
+kaannos: automaattinen   # automaattinen = tallennus kääntää puuttuvat tekstit tekoälyllä, vain_suomi = ei käännetä (hallintapaneeli → Asetukset)
